@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Cilroy, sans-serif;
+}
+
+.main-container {
+  max-width: 1664px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
