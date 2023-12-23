@@ -1,0 +1,13 @@
+# Dependency directories
+.husky
+.vscode
+node_modules/
+
+.editorconfig
+.eslintrc.cjs
+.prettierignore
+.prettierrc.json
+.stylelintrc.json
+
+package-lock.json
+package.json
