@@ -3,11 +3,142 @@
 }
 
 body {
-  font-family: Cilroy, sans-serif;
+  font-family: Gilroy, sans-serif;
 }
 
 .main-container {
   max-width: 1664px;
   margin: 0 auto;
   padding: 0 32px;
+}
+
+/* стили строки  хедера с логотипом и поисковиком и адаптация под медиа-запрос */
+
+.main-header {
+  height: 851px;
+  padding-top: 43px;
+  background: linear-gradient(39deg, #9796f0 -10.38%, #fbc7d4 107.56%);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  text-align: center;
+}
+
+.search {
+  width: 490px;
+  height: 60px;
+  padding-left: 69px;
+  font-size: 16px;
+  font-style: normal;
+  line-height: 105.5%;
+  font-weight: 500;
+  background-color: rgba(28 28 28 / 0);
+  background-image: url('../images/icons/search.svg');
+  background-position: 28px;
+  background-repeat: no-repeat;
+  border: 4px solid #272525;
+  border-radius: 90px;
+}
+
+.phone_numb_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+  height: 60px;
+  padding: 17px 60px;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 105.5%;
+  font-weight: 600;
+  text-decoration: none;
+  color: aliceblue;
+  background: #1fab8a;
+  border-radius: 90px;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.profile {
+  width: 40.099px;
+  height: 40px;
+  cursor: pointer;
+  background-color: rgb(28 28 28 / 0);
+  border: none;
+  flex-shrink: 0;
+}
+
+.lang {
+  display: block;
+}
+
+.lang > button {
+  font-size: 18px;
+  font-style: normal;
+  line-height: 105.5%;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgb(28 28 28 / 0);
+  border: none;
+}
+
+.lang .eng {
+  color: grey;
+}
+
+/* 1000px экран */
+
+@media (width <= 1500px) {
+  .main-container {
+    padding: 0 20px;
+  }
+
+  .main-header {
+    height: 808px;
+    padding-top: 27px;
+    background: linear-gradient(39deg, #9796f0 -10.38%, #fbc7d4 107.56%);
+  }
+
+  .main-nav {
+    height: 36px;
+  }
+
+  .search {
+    width: 300px;
+    height: 36px;
+    padding-left: 41px;
+    font-size: 14px;
+    font-weight: 500;
+    background-image: url('../images/icons/search1000px.svg');
+    background-position: 16px;
+    border: 2.4px solid #272525;
+    border-radius: 54px;
+  }
+
+  .phone_numb_header {
+    width: 184.5px;
+    height: 36px;
+    padding: 10.5px 37.3px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: aliceblue;
+    background: #1fab8a;
+    border-radius: 54px;
+    gap: 10px;
+  }
+
+  .profile {
+    width: 24px;
+    height: 24px;
+  }
+
+  .lang > button {
+    font-size: 12px;
+    font-weight: 400;
+  }
 }
