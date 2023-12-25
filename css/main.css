@@ -81,22 +81,33 @@ body {
   font-style: normal;
   line-height: 105.5%;
   font-weight: 600;
-  cursor: pointer;
   background-color: rgb(28 28 28 / 0);
   border: none;
 }
 
-.lang .eng {
-  color: grey;
+.ru {
+  cursor: pointer;
 }
 
-/* 1000px экран */
+.eng {
+  color: grey;
+  cursor: not-allowed;
+}
+
+.burger {
+  display: none;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  background-color: rgb(28 28 28 / 0);
+  background-image: url('/images/icons/barsburger.svg');
+  background-repeat: no-repeat;
+  border: none;
+}
+
+/* до 1500px экран */
 
 @media (width <= 1500px) {
-  .main-container {
-    padding: 0 20px;
-  }
-
   .main-header {
     height: 808px;
     padding-top: 27px;
@@ -140,5 +151,74 @@ body {
   .lang > button {
     font-size: 12px;
     font-weight: 400;
+  }
+}
+
+/* до 1000px экран */
+
+@media (width <= 1000px) {
+  .main-header {
+    height: 577px;
+    padding-top: 0;
+    background-color: none;
+  }
+
+  .search,
+  .profile,
+  .lang {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .main-nav {
+    height: 80px;
+    background-color: rgb(250 251 253 / 0.44);
+  }
+
+  .logo img {
+    float: left;
+    width: 229px;
+    height: 18.3px;
+  }
+
+  .phone_numb_header {
+    position: right;
+    margin-right: -200px;
+  }
+}
+
+/* до 786px экран */
+
+@media (width <= 786px) {
+  .phone_numb_header {
+    display: none;
+  }
+
+  .logo img {
+    width: 210px;
+    height: 17px;
+  }
+}
+
+/* до 480px экран */
+
+@media (width <= 480px) {
+  .logo img {
+    width: 130px;
+    height: 10px;
+  }
+
+  .burger {
+    width: 24px;
+    height: 36px;
+    margin-right: 0;
+    padding-top: 15px;
+  }
+
+  .main-nav {
+    height: 50px;
   }
 }
