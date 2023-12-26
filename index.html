@@ -11,28 +11,60 @@
 <body>
 
   <header class="main-header">
-    <nav class="main-nav main-container">
-      <a class="logo" href="index.html">
+
+    <section class="main-header__menu main-container">
+
+      <a class="menu__logo" href="index.html">
         <picture>
           <source srcset="./images/logo/logo1000px.svg" media="(max-width: 1500px)">
           <img src="./images/logo/logo.svg" alt="логотип нашего магазина">
         </picture>
       </a>
-      <input class="search" type="text" placeholder="Поиск">
-      <a href="tel:+0123456789" class="phone_numb_header">+01 234 56 789</a>
-      <button class="profile">
+
+      <input class="menu__search-bar" type="text" placeholder="Поиск">
+
+      <a class="menu__phone-number" href="tel:+0123456789">+01 234 56 789</a>
+
+      <button class="menu__btn menu__btn-profile">
         <picture>
           <source srcset="./images/icons/user1000px.svg" media="(max-width: 1500px)">
           <img src="./images/icons/user.svg" alt="иконка входа в личный кабинет">
         </picture>
       </button>
-      <div class="lang">
-        <button class="ru">RU</button>
+
+      <div class="menu__lang">
+        <button class="menu__btn btn-lang--ru">RU</button>
         <span>/</span>
-        <button class="eng">EN</button>
+        <button class="menu__btn btn-lang--eng">EN</button>
       </div>
-      <button class="burger"></button>
+
+      <button class="menu__burger"></button>
+
+    </section>
+
+    <nav class="main-header__nav">
+
+      <section class="main-container main-header__main-sec">
+        <img src="/images/icons/activemenu.svg" alt="" class="active-menu">
+        <ul class="main-header__nav-list">
+          <li class="main-header__nav-item nav-item--current"><a href="#">Все товары</a></li>
+          <li class="main-header__nav-item"><a href="#">Наборы</a></li>
+          <li class="main-header__nav-item"><a href="#">Информация</a></li>
+        </ul>
+
+        <div class="main-header__nav-sale">
+          <div class="nav-sale__text">шопперы со скидкой - 25%</div>
+          <div class="nav-sale__ico">
+          </div>
+        </div>
+      </section>
+
+
+
     </nav>
+
+
+
   </header>
 
 

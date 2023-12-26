@@ -1,3 +1,4 @@
+/* stylelint-disable font-family-no-missing-generic-family-keyword */
 * {
   box-sizing: border-box;
 }
@@ -12,15 +13,15 @@ body {
   padding: 0 32px;
 }
 
-/* стили строки  хедера с логотипом и поисковиком и адаптация под медиа-запрос */
-
 .main-header {
   height: 851px;
   padding-top: 43px;
   background: linear-gradient(39deg, #9796f0 -10.38%, #fbc7d4 107.56%);
 }
 
-.main-nav {
+/* стили меню строки  хедера с логотипом и поисковиком main-header__menu */
+
+.main-header__menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,7 +29,7 @@ body {
   text-align: center;
 }
 
-.search {
+.menu__search-bar {
   width: 490px;
   height: 60px;
   padding-left: 69px;
@@ -44,7 +45,7 @@ body {
   border-radius: 90px;
 }
 
-.phone_numb_header {
+.menu__phone-number {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,20 +64,20 @@ body {
   flex-shrink: 0;
 }
 
-.profile {
+.menu__btn-profile {
   width: 40.099px;
   height: 40px;
-  cursor: pointer;
+  cursor: not-allowed;
   background-color: rgb(28 28 28 / 0);
   border: none;
   flex-shrink: 0;
 }
 
-.lang {
+.menu__lang {
   display: block;
 }
 
-.lang > button {
+.menu__btn {
   font-size: 18px;
   font-style: normal;
   line-height: 105.5%;
@@ -85,16 +86,16 @@ body {
   border: none;
 }
 
-.ru {
+.btn-lang--ru {
   cursor: pointer;
 }
 
-.eng {
+.btn-lang--eng {
   color: grey;
   cursor: not-allowed;
 }
 
-.burger {
+.menu__burger {
   display: none;
   width: 34px;
   height: 34px;
@@ -105,6 +106,74 @@ body {
   border: none;
 }
 
+/* стили навигации по разделам main-header__nav */
+
+.main-header__nav {
+  height: 100px;
+  margin-top: 43px;
+  background-color: rgb(250 251 253 / 0.44);
+}
+
+.main-header__main-sec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-header__nav-list {
+  position: absolute;
+  display: inline-flex;
+  height: 118px;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.main-header__nav-item {
+  margin-right: 80px;
+  padding-top: 39px;
+  font-family: Gilroy;
+  font-size: 18px;
+  font-style: normal;
+  line-height: 105.5%;
+  font-weight: 800;
+}
+
+.main-header__nav-item > a {
+  text-decoration: none;
+  color: #272525;
+}
+
+.main-header__nav-sale {
+  display: flex;
+  height: 100px;
+}
+
+.nav-item--current > a {
+  color: aliceblue;
+}
+
+.nav-sale__text {
+  padding-top: calc(31px - (54px - 38px));
+  padding-right: 15px;
+  font-family: 'Neutraface Display';
+  font-size: 38px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 900;
+  text-align: center;
+  text-transform: lowercase;
+  color: #3c336c;
+}
+
+.nav-sale__ico {
+  width: 117.4px;
+  height: 100px;
+  background-image: url('/images/icons/shopping-bags1500px.svg');
+}
+
+.main-header__main-sec > img {
+  margin-left: -16px;
+}
 /* до 1500px экран */
 
 @media (width <= 1500px) {
@@ -114,11 +183,11 @@ body {
     background: linear-gradient(39deg, #9796f0 -10.38%, #fbc7d4 107.56%);
   }
 
-  .main-nav {
+  .main-header__menu {
     height: 36px;
   }
 
-  .search {
+  .menu__search-bar {
     width: 300px;
     height: 36px;
     padding-left: 41px;
@@ -130,7 +199,7 @@ body {
     border-radius: 54px;
   }
 
-  .phone_numb_header {
+  .menu__phone-number {
     width: 184.5px;
     height: 36px;
     padding: 10.5px 37.3px;
@@ -143,14 +212,30 @@ body {
     gap: 10px;
   }
 
-  .profile {
+  .menu__btn-profile {
     width: 24px;
     height: 24px;
   }
 
-  .lang > button {
+  .menu__lang {
     font-size: 12px;
     font-weight: 400;
+  }
+
+  .main-header__nav-item {
+    margin-right: 40px;
+  }
+
+  .main-header__main-sec > img {
+    width: 205px;
+    height: 132px;
+  }
+
+  .nav-sale__text {
+    width: 210px;
+    margin-right: 10px;
+    font-size: 24px;
+    text-align: start;
   }
 }
 
@@ -160,44 +245,47 @@ body {
   .main-header {
     height: 577px;
     padding-top: 0;
-    background-color: none;
   }
 
-  .search,
-  .profile,
-  .lang {
-    display: none;
-  }
-
-  .burger {
-    display: flex;
-  }
-
-  .main-nav {
+  .main-header__menu {
     height: 80px;
     background-color: rgb(250 251 253 / 0.44);
   }
 
-  .logo img {
+  .menu__search-bar,
+  .menu__btn-profile,
+  .menu__lang {
+    display: none;
+  }
+
+  .menu__burger {
+    display: flex;
+  }
+
+  .menu__logo img {
     float: left;
     width: 229px;
     height: 18.3px;
   }
 
-  .phone_numb_header {
+  .menu__phone-number {
     position: right;
     margin-right: -200px;
+  }
+
+  .main-header__nav {
+    display: none;
   }
 }
 
 /* до 786px экран */
 
 @media (width <= 786px) {
-  .phone_numb_header {
+  .menu__phone-number {
     display: none;
   }
 
-  .logo img {
+  .menu__logo img {
     width: 210px;
     height: 17px;
   }
@@ -206,19 +294,24 @@ body {
 /* до 480px экран */
 
 @media (width <= 480px) {
-  .logo img {
+  .main-container {
+    min-width: 224px;
+    padding: 20px;
+  }
+
+  .main-header__menu {
+    height: 50px;
+  }
+
+  .menu__logo img {
     width: 130px;
     height: 10px;
   }
 
-  .burger {
+  .menu__burger {
     width: 24px;
     height: 36px;
     margin-right: 0;
     padding-top: 15px;
-  }
-
-  .main-nav {
-    height: 50px;
   }
 }
