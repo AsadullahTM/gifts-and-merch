@@ -1,9 +1,14 @@
 /* stylelint-disable font-family-no-missing-generic-family-keyword */
-* {
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  min-width: 220px;
   font-family: Gilroy, sans-serif;
 }
 
@@ -15,8 +20,7 @@ body {
 
 .main-header {
   height: 851px;
-  padding-top: 43px;
-  background: linear-gradient(39deg, #9796f0 -10.38%, #fbc7d4 107.56%);
+  background-image: linear-gradient(39deg, #9796f0 -10.38%, #fbc7d4 107.56%);
 }
 
 /* стили меню строки  хедера с логотипом и поисковиком main-header__menu */
@@ -25,7 +29,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 146px;
   text-align: center;
 }
 
@@ -35,7 +39,6 @@ body {
   padding-left: 69px;
   font-size: 16px;
   font-style: normal;
-  line-height: 105.5%;
   font-weight: 500;
   background-color: rgba(28 28 28 / 0);
   background-image: url('../images/icons/search.svg');
@@ -54,23 +57,22 @@ body {
   padding: 17px 60px;
   font-size: 18px;
   font-style: normal;
-  line-height: 105.5%;
   font-weight: 600;
   text-decoration: none;
   color: aliceblue;
   background: #1fab8a;
   border-radius: 90px;
   gap: 10px;
-  flex-shrink: 0;
+  box-shadow: 0 3.609px 15.037px 0 rgb(121 129 173 / 0.45);
 }
 
 .menu__btn-profile {
-  width: 40.099px;
+  width: 40px;
   height: 40px;
+  padding: 0;
   cursor: not-allowed;
   background-color: rgb(28 28 28 / 0);
   border: none;
-  flex-shrink: 0;
 }
 
 .menu__lang {
@@ -80,7 +82,6 @@ body {
 .menu__btn {
   font-size: 18px;
   font-style: normal;
-  line-height: 105.5%;
   font-weight: 600;
   background-color: rgb(28 28 28 / 0);
   border: none;
@@ -110,32 +111,36 @@ body {
 
 .main-header__nav {
   height: 100px;
-  margin-top: 43px;
   background-color: rgb(250 251 253 / 0.44);
 }
 
 .main-header__main-sec {
   display: flex;
   justify-content: space-between;
+  height: 100px;
+}
+
+.active-menu {
+  height: 136px;
 }
 
 .main-header__nav-list {
-  position: absolute;
-  display: inline-flex;
-  height: 118px;
+  display: flex;
   margin-top: 0;
   margin-bottom: 0;
   list-style: none;
 }
 
 .main-header__nav-item {
-  margin-right: 80px;
-  padding-top: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 179px;
   font-family: Gilroy;
   font-size: 18px;
   font-style: normal;
-  line-height: 105.5%;
   font-weight: 800;
+  border-radius: 10px;
 }
 
 .main-header__nav-item > a {
@@ -145,7 +150,23 @@ body {
 
 .main-header__nav-sale {
   display: flex;
+  align-items: center;
   height: 100px;
+}
+
+.nav-item--current {
+  background-color: #272525;
+}
+
+.nav-item--current::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 179px;
+  height: 7px;
+  margin-top: 125px;
+  background-color: #000;
+  border-radius: 10px;
 }
 
 .nav-item--current > a {
@@ -153,15 +174,12 @@ body {
 }
 
 .nav-sale__text {
-  padding-top: calc(31px - (54px - 38px));
   padding-right: 15px;
-  font-family: 'Neutraface Display';
   font-size: 38px;
   font-style: normal;
-  line-height: normal;
   font-weight: 900;
   text-align: center;
-  text-transform: lowercase;
+  text-transform: uppercase;
   color: #3c336c;
 }
 
@@ -171,25 +189,88 @@ body {
   background-image: url('/images/icons/shopping-bags1500px.svg');
 }
 
-.main-header__main-sec > img {
-  margin-left: -16px;
+/* стили главной секции хедера */
+
+.intro__breadcrumbs {
+  display: flex;
+  width: 239px;
+  font-family: Gilroy;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  color: #524983;
 }
+
+.intro-breadcrumbs__list {
+  display: flex;
+  margin-top: 30px;
+  list-style: none;
+}
+
+.intro-breadcrumbs__item {
+  margin-right: 5px;
+  font-family: Gilroy;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  color: #524983;
+}
+
+.current-crumb {
+  color: #7981ad;
+}
+
+.intro-breadcrumbs__item > a {
+  text-decoration: none;
+}
+
+.intro__h1 {
+  width: 638px;
+  font-family: Gilroy;
+  font-size: 48px;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.intro__p {
+  width: 638px;
+  margin-top: 20px;
+  font-family: Gilroy;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 1.17px;
+  color: #454747;
+}
+
+.intro-content__image1,
+.intro-content__image2 {
+  position: absolute;
+  margin-top: -200px;
+  margin-left: 500px;
+}
+
 /* до 1500px экран */
 
 @media (width <= 1500px) {
+  .main-container {
+    max-width: 1200px;
+  }
+
   .main-header {
-    height: 808px;
-    padding-top: 27px;
+    height: 809px;
     background: linear-gradient(39deg, #9796f0 -10.38%, #fbc7d4 107.56%);
   }
 
   .main-header__menu {
-    height: 36px;
+    height: 103px;
   }
 
   .menu__search-bar {
     width: 300px;
-    height: 36px;
+    height: 37px;
     padding-left: 41px;
     font-size: 14px;
     font-weight: 500;
@@ -222,20 +303,15 @@ body {
     font-weight: 400;
   }
 
-  .main-header__nav-item {
-    margin-right: 40px;
-  }
-
-  .main-header__main-sec > img {
-    width: 205px;
-    height: 132px;
-  }
-
   .nav-sale__text {
     width: 210px;
     margin-right: 10px;
     font-size: 24px;
     text-align: start;
+  }
+
+  .intro {
+    display: none;
   }
 }
 
@@ -244,7 +320,6 @@ body {
 @media (width <= 1000px) {
   .main-header {
     height: 577px;
-    padding-top: 0;
   }
 
   .main-header__menu {
@@ -270,7 +345,7 @@ body {
 
   .menu__phone-number {
     position: right;
-    margin-right: -200px;
+    box-shadow: 0 3.609px 15.037px 0 rgb(121 129 173 / 0.45);
   }
 
   .main-header__nav {
@@ -281,6 +356,10 @@ body {
 /* до 786px экран */
 
 @media (width <= 786px) {
+  .main-header {
+    height: 526px;
+  }
+
   .menu__phone-number {
     display: none;
   }
@@ -294,8 +373,15 @@ body {
 /* до 480px экран */
 
 @media (width <= 480px) {
+  html {
+    min-width: 320px;
+  }
+
+  .main-header {
+    height: 681px;
+  }
+
   .main-container {
-    min-width: 224px;
     padding: 20px;
   }
 
@@ -310,8 +396,7 @@ body {
 
   .menu__burger {
     width: 24px;
-    height: 36px;
-    margin-right: 0;
-    padding-top: 15px;
+    height: 24px;
+    background-image: url('/images/icons/bars480px.svg');
   }
 }
