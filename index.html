@@ -12,7 +12,7 @@
 
   <header class="main-header">
 
-    <section class="main-header__menu main-container">
+    <section class="main-header__menu menu main-container">
 
       <a class="menu__logo" href="index.html">
         <picture>
@@ -23,9 +23,9 @@
 
       <input class="menu__search-bar" type="text" placeholder="Поиск">
 
-      <a class="menu__phone-number" href="tel:+0123456789">+01 234 56 789</a>
+      <a class="menu__phone-number" href="tel:+380630130103">+380 630 130 103</a>
 
-      <button class="menu__btn menu__btn-profile">
+      <button class="menu__btn menu__btn--profile" type="button">
         <picture>
           <source srcset="./images/icons/user1000px.svg" media="(max-width: 1500px)">
           <img src="./images/icons/user.svg" alt="иконка входа в личный кабинет">
@@ -33,9 +33,9 @@
       </button>
 
       <div class="menu__lang">
-        <button class="menu__btn btn-lang--ru">RU</button>
+        <button class="menu__btn menu__btn--active" type="button">RU</button>
         <span>/</span>
-        <button class="menu__btn btn-lang--eng">EN</button>
+        <button class="menu__btn" type="button">ENG</button>
       </div>
 
       <button class="menu__burger"></button>
@@ -45,17 +45,15 @@
     <nav class="main-header__nav">
 
       <section class="main-container main-header__main-sec">
-        <ul class="main-header__nav-list">
-          <li class="main-header__nav-item nav-item--current"><a href="#">Все товары</a></li>
-          <li class="main-header__nav-item"><a href="#">Наборы</a></li>
-          <li class="main-header__nav-item"><a href="#">Информация</a></li>
+        <ul class="main-header__nav-list nav-list">
+          <li><a class="nav-list__link">Все товары</a></li>
+          <li><a class="nav-list__link" href="#">Наборы</a></li>
+          <li><a class="nav-list__link" href="#">Информация</a></li>
         </ul>
 
-        <div class="main-header__nav-sale">
-          <div class="nav-sale__text">шопперы со скидкой - 25%</div>
-          <div class="nav-sale__ico">
-          </div>
-        </div>
+
+        <p class="main-header__sale">шопперы со скидкой - 25%</p>
+
       </section>
 
 
@@ -66,6 +64,7 @@
 
       <nav class="intro__breadcrumbs">
         <ul class="intro-breadcrumbs__list">
+          <!-- Оставить заметку для Олега: content -->
           <li class="intro-breadcrumbs__item current-crumb">Главная</li>
           <li class="intro-breadcrumbs__item">/</li>
           <li class="intro-breadcrumbs__item "><a href="#">Наборы</a></li>
@@ -74,8 +73,10 @@
 
       <div class="intro-content">
         <section class="intro__text-section">
-          <h1 class="intro__h1">ПОдарочные наборы это необычные......</h1>
-          <p class="intro__p">Почему? Потому что это ощутимо и это волнует. Это вовлекает, повышает осведомленность и вызывает эмоции.</p>
+
+          <h1 class="intro__title">ПОдарочные наборы это необычные......</h1>
+
+          <p class="intro__sub-title">Почему? Потому что это ощутимо и это волнует. Это вовлекает, повышает осведомленность и вызывает эмоции.</p>
           <button class="intro__btn-donebox">Выбрать готовый бокс</button>
           <a href="#" class="intro__createbox">Создать свой</a>
         </section>
