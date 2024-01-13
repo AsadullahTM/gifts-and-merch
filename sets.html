@@ -73,9 +73,10 @@
       <h1 class="intro__title">ПОдарочные наборы это необычные......</h1>
 
       <p class="intro__sub-title">Почему? Потому что это ощутимо и это волнует. Это вовлекает, повышает осведомленность и вызывает эмоции.</p>
-      <button class="intro__btn-donebox">Выбрать готовый бокс</button>
-      <a href="#" class="intro__createbox">Создать свой</a>
-
+      <div class="intro__btns">
+        <button class="intro__btn-donebox">Выбрать готовый бокс</button>
+        <a href="#" class="intro__createbox">Создать свой</a>
+      </div>
     </div>
 
     <img class="intro-content__image1" src="/images/main_img/сфс 1image1-1500px.svg" alt="">
@@ -84,16 +85,16 @@
 
   </header>
 
-  <main class="main main-container">
+  <main class="main ">
 
-    <section class=" main__cards cards">
+    <section class="main-container main__cards cards">
 
       <h2 class="cards__subtitle">Готовые наборы</h2>
 
       <ul class="cards__list">
 
         <li class="cards__item">
-          <img class="cards__main_img" src="/images/main_img/card1.svg" alt="">
+          <img class="cards__main-img" src="/images/main_img/set1.jpg" alt="">
           <div class="cards__info">
             <p class="cards__name">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
             <p class="cards__overview">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
@@ -110,7 +111,7 @@
         </li>
 
         <li class="cards__item">
-          <img class="cards__main_img" src="/images/main_img/card2.svg" alt="">
+          <img class="cards__main-img" src="/images/main_img/set2.jpg" alt="">
           <div class="cards__info">
             <p class="cards__name">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
             <p class="cards__overview">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
@@ -127,7 +128,7 @@
         </li>
 
         <li class="cards__item">
-          <img class="cards__main_img" src="/images/main_img/cadr3.svg" alt="">
+          <img class="cards__main-img" src="/images/main_img/set3.jpg" alt="">
           <div class="cards__info">
             <p class="cards__name">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
             <p class="cards__overview">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
@@ -144,7 +145,7 @@
         </li>
 
         <li class="cards__item">
-          <img class="cards__main_img" src="/images/main_img/card4.svg" alt="">
+          <img class="cards__main-img" src="/images/main_img/set4.jpg" alt="">
           <div class="cards__info">
             <p class="cards__name">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
             <p class="cards__overview">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
@@ -164,32 +165,50 @@
 
     </section>
 
-    <div class=" main-container main__advantages advantages">
-
-      <section class="advantages__section">
+    <ul class=" main-container main__advantages advantages">
+      <li class="advantages__section">
         <h2 class="advantages__title">Сроки изготовления</h2>
         <p class="advantages__text">Сроки пошива будут зависеть от объема Вашего заказа и сложности моделей. В среднем изготовление корпоративной продукции занимает <b>10 -18 рабочих дней</b> с момента утверждения всех деталей.</p>
-        <p class="advantages__text--alternative">Если же Вам нужно "на вчера" - Вы можете согласовать такие условия со своими личным менеджером.</p>
+        <p class="advantages__text advantages__text--purple">Если же Вам нужно "на вчера" - Вы можете согласовать такие условия со своими личным менеджером.</p>
 
-      </section>
+      </li>
 
-      <section class="advantages__section">
+      <li class="advantages__section">
         <h2 class="advantages__title">Стоимость</h2>
-        <p class="advantages__text">Стоимость производства брендированной продукции на заказ расчитывается
-          индивидуально. Цена зависит от сложности работы, брендирования, материалов, тиража
-          и срочности. Мы подберем для вас оптимальный вариант в соответствии с вашим бюджетом</p>
-      </section>
+        <p class="advantages__text">Стоимость производства брендированной продукции на заказ расчитывается индивидуально. Цена зависит от сложности работы, брендирования, материалов, тиража и срочности. Мы подберем для вас оптимальный вариант в соответствии с вашим бюджетом</p>
+      </li>
 
-      <section class="advantages__section">
+      <li class="advantages__section">
         <h2 class="advantages__title">Брендирование</h2>
-        <p class="advantages__text">Стоимость производства брендированной продукции на заказ расчитывается
-          индивидуально. Цена зависит от сложности работы, брендирования, материалов, тиража
-          и срочности. Мы подберем для вас оптимальный вариант в соответствии с вашим бюджетом</p>
-      </section>
+        <p class="advantages__text">Стоимость производства брендированной продукции на заказ расчитывается индивидуально. Цена зависит от сложности работы, брендирования, материалов, тиража и срочности. Мы подберем для вас оптимальный вариант в соответствии с вашим бюджетом</p>
+      </li>
+    </ul>
 
+    <div class="main__form-block  ">
+      <div class="main-container form-block">
+        <div class="form-block__contact-us">
+          <img class="form-block__title" src="/images/main_img/Pangolin.png" alt="">
+          <h2 class="form-block__subtitle">Как создать бокс по Вашей идее?</h2>
+          <p class="form-block__text">У вас своя уникальная идея для бокса или хотите все стилизовать к одному виду?</p>
+          <form class="form-block__form form" action="" method="post">
+            <p class="form__text">Введите свои контактные данные, и наш менеджер свяжется с Вами <span class="form__text--green">в течении 15 минут</span></p>
+            <div class="form__data">
+              <input class="form__input" type="text" placeholder="Ваше Имя">
+              <input class="form__input" type="text" placeholder="Ваша электронная почта">
+              <input class="form__input" type="text" placeholder="Ваш номер телефона">
+              <button class="form__btn" type="submit">Заказать</button>
+            </div>
+          </form>
+        </div>
+
+
+        <img class="form-block__img" src="/images/main_img/Photo.png" alt="">
+
+      </div>
     </div>
 
-  </main>
 
+  </main>
+  <footer style="height: 100px;"></footer>
 </body>
 </html>

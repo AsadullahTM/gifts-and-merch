@@ -183,6 +183,8 @@ body {
 .intro {
   position: relative;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .intro__breadcrumbs {
@@ -243,14 +245,13 @@ body {
   padding: 18px 40px;
   font-family: Montserrat, sans-serif;
   font-size: 17px;
-  font-style: normal;
   font-weight: 500;
   text-align: center;
   color: #fafbfd;
   cursor: pointer;
   background-color: #3c336c;
+  border: none;
   border-radius: 60px;
-  gap: 10px;
 }
 
 .intro__createbox {
@@ -258,7 +259,6 @@ body {
   padding: 0;
   font-family: Gilroy, sans-serif;
   font-size: 17px;
-  font-style: normal;
   font-weight: 500;
   text-align: center;
   text-decoration: none;
@@ -311,7 +311,6 @@ body {
   margin-bottom: 0;
   padding-top: 0;
   font-size: 48px;
-  font-style: normal;
   line-height: normal;
   font-weight: 700;
 }
@@ -321,16 +320,15 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0;
-  margin-top: 0;
+  margin-top: 40px;
   padding: 0;
   padding-top: 0;
   list-style: none;
 }
 
 .cards__item {
-  max-width: 378px;
+  width: calc(25% - 22.5px);
   margin: 0;
-  margin-top: 40px;
   padding: 0;
   font-size: 0;
   background: #fff;
@@ -340,36 +338,33 @@ body {
     0 16.057px 22px -8px rgb(82 73 131 / 0.1);
 }
 
-.cards__main_img {
+.cards__main-img {
   width: 100%;
   margin-bottom: 0;
   padding-bottom: 0;
   border-radius: 15px;
+  object-fit: cover;
+  aspect-ratio: 1;
 }
 
 .cards__info {
   display: flex;
   flex-direction: column;
-  padding-left: 16px;
+  padding: 13px 14px 9px 16px;
   font-size: 0;
 }
 
 .cards__name {
-  max-width: 322px;
   margin: 0;
-  padding-top: 13px;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
 }
 
 .cards__overview {
-  max-width: 224px;
   margin: 0;
   padding: 0;
   padding-top: 12px;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
 }
 
@@ -410,15 +405,11 @@ body {
   justify-content: space-between;
   margin: 0;
   padding-top: 44px;
-  padding-right: 14px;
-  padding-bottom: 9px;
 }
 
 .cards__price {
-  max-width: 190px;
   margin: 0;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
   color: #c4c4c4;
 }
@@ -436,42 +427,146 @@ body {
 
 .main__advantages {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0;
   margin-top: 80px;
-  padding: 0;
+  list-style: none;
+}
+
+.advantages__section {
+  width: calc(33.33% - 20px);
 }
 
 .advantages__title {
   margin: 0;
   font-size: 36px;
-  font-style: normal;
   font-weight: 600;
 }
 
 .advantages__text {
-  width: 471px;
   margin: 0;
-  padding-top: 20px;
+  margin-top: 20px;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   color: #454747;
 }
 
-.advantages__text--alternative {
-  width: 471px;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
+.advantages__text--purple {
   color: #524983;
+}
+
+/* стили блока с формой */
+
+.main__form-block {
+  margin-top: 50px;
+  background: url('/images/backgrounds/Rectangle\ 88desctop_form.svg') no-repeat;
+  background-position: 50% 10%;
+  background-size: 100%;
+}
+
+.form-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-block__contact-us {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-block__title {
+  width: 293px;
+  height: 64px;
+  margin: 0 auto;
+}
+
+.form-block__subtitle {
+  margin: 0;
+  margin-top: 9.7px;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.form-block__text {
+  width: 592px;
+  margin: 0;
+  margin-top: 23px;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 1.17px;
+  color: #454747;
+}
+
+.form {
+  display: flex;
+  margin-top: 36px;
+}
+
+.form__text,
+.form__data {
+  width: calc(50% - 88px);
+  margin-top: 0;
+  margin-right: auto;
+  padding-top: 0;
+}
+
+.form__text {
+  max-width: 300px;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.form__text--green {
+  color: #1fab8a;
+}
+
+.form__data {
+  display: block;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.form__input {
+  align-items: flex-start;
+  width: 336px;
+  margin-bottom: 34px;
+  font-size: 16px;
+  font-weight: 400;
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  gap: 4px;
+}
+
+.form__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  margin-top: 4px;
+  padding: 16px 97px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fafbfd;
+  background: #1fab8a;
+  border-style: none;
+  border-radius: 60px;
+  flex-shrink: 0;
+}
+
+.form-block__img {
+  margin: 0;
+  padding-top: 40px;
 }
 /* до 1500px экран */
 
-@media (width <= 1500px) {
+@media (width < 1500px) {
   .main-container {
-    max-width: 1100px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 
   .main-header {
@@ -554,7 +649,7 @@ body {
   }
 
   .intro__createbox {
-    padding-left: 30px;
+    margin-left: 30px;
   }
 
   .intro-content__image1 {
@@ -569,31 +664,28 @@ body {
     height: 400px;
   }
 
-  .cards__item {
-    max-width: 303px;
+  .cards__list {
     margin-top: 21.5px;
+  }
+
+  .cards__item {
+    width: calc(33.33% - 16px);
   }
 
   .cards__item:last-child {
     display: none;
   }
 
-  .cards__main_img {
-    height: 310px;
-  }
-
   .cards__info {
+    padding-top: 12px;
     padding-left: 13px;
   }
 
   .cards__name {
-    width: 258px;
-    padding-top: 12px;
     font-size: 19px;
   }
 
   .cards__overview {
-    width: 180px;
     padding-top: 10px;
     font-size: 10px;
   }
@@ -616,7 +708,6 @@ body {
   }
 
   .cards__price {
-    width: 150px;
     font-size: 19px;
   }
 
@@ -625,11 +716,20 @@ body {
     height: 44px;
     background-size: 45px;
   }
+
+  .advantages {
+    flex-wrap: wrap;
+  }
+
+  .advantages__section {
+    width: calc(50% - 14px);
+    margin-bottom: 35px;
+  }
 }
 
 /* до 1000px экран */
 
-@media (width <= 1000px) {
+@media (width < 1000px) {
   .main-header {
     min-height: 577px;
   }
@@ -695,13 +795,11 @@ body {
   }
 
   .cards__list {
-    justify-content: center;
     margin-top: 16px;
   }
 
   .cards__item {
-    max-width: 350px;
-    margin-right: 28px;
+    width: calc(50% - 14px);
     margin-bottom: 25px;
   }
 
@@ -710,17 +808,15 @@ body {
   }
 
   .cards__info {
+    padding-top: 14px;
     padding-left: 15px;
   }
 
   .cards__name {
-    width: 297px;
-    padding-top: 14px;
     font-size: 22px;
   }
 
   .cards__overview {
-    width: 207px;
     padding-top: 11px;
     font-size: 11px;
   }
@@ -752,7 +848,7 @@ body {
 
 /* до 786px экран */
 
-@media (width <= 786px) {
+@media (width < 768px) {
   .main-header {
     height: 526px;
   }
@@ -781,6 +877,13 @@ body {
     width: 320px;
   }
 
+  .intro__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+  }
+
   .intro__btn-donebox {
     display: flex;
     margin-top: 30px;
@@ -791,8 +894,8 @@ body {
   .intro__createbox {
     display: inline-block;
     justify-content: center;
+    margin: 0;
     margin-top: 10px;
-    padding-left: 20px;
     font-size: 14px;
     text-align: center;
   }
@@ -812,33 +915,19 @@ body {
   }
 
   .cards__item {
-    max-width: 212px;
-    margin-top: 25px;
+    width: calc(50% - 8px);
     margin-bottom: 15px;
-  }
-
-  .cards__list li {
-    margin: 0;
-    margin-right: 17px;
-    margin-bottom: 15px;
-  }
-
-  .cards__main_img {
-    height: 217px;
   }
 
   .cards__info {
-    padding-left: 9px;
+    padding: 8.5px 7.8px 5px 9px;
   }
 
   .cards__name {
-    width: 180px;
-    padding-top: 8.5px;
     font-size: 13.4px;
   }
 
   .cards__overview {
-    width: 125px;
     padding-top: 7px;
     font-size: 7px;
   }
@@ -859,8 +948,6 @@ body {
 
   .cards__purchase {
     padding-top: 25px;
-    padding-right: 7.8px;
-    padding-bottom: 5px;
   }
 
   .cards__price {
@@ -875,24 +962,27 @@ body {
   }
 
   .advantages {
-    display: none;
+    margin-top: 40px;
+  }
+
+  .advantages__section {
+    width: 100%;
+  }
+
+  .advantages__text {
+    margin-top: 15px;
   }
 }
 
 /* до 480px экран */
 
-@media (width <= 480px) {
+@media (width < 480px) {
   html {
     min-width: 320px;
   }
 
   .main-header {
     min-height: 681px;
-  }
-
-  .main-container {
-    padding-right: 20px;
-    padding-left: 20px;
   }
 
   .menu {
@@ -911,9 +1001,6 @@ body {
   }
 
   .intro {
-    display: block;
-    align-items: center;
-    justify-content: center;
     text-align: center;
   }
 
@@ -933,6 +1020,10 @@ body {
     text-align: center;
   }
 
+  .intro__btns {
+    align-self: center;
+  }
+
   .intro__btn-donebox {
     justify-content: space-between;
     margin-top: 300px;
@@ -943,8 +1034,6 @@ body {
   .intro__createbox {
     display: block;
     justify-content: center;
-    margin-left: 0;
-    padding-left: 20px;
   }
 
   .intro-content__image1 {
@@ -977,31 +1066,20 @@ body {
     margin-top: 10px;
   }
 
-  .cards__list li {
-    margin-right: 0;
+  .cards__item {
+    width: 100%;
     margin-bottom: 20px;
   }
 
-  .cards__item {
-    min-width: 280px;
-  }
-
-  .cards__main_img {
-    height: 287px;
-  }
-
   .cards__info {
-    padding-left: 17.8px;
+    padding: 11.1px 10.3px 6px 17.8px;
   }
 
   .cards__name {
-    width: 238px;
-    padding-top: 11.1px;
     font-size: 17.8px;
   }
 
   .cards__overview {
-    width: 166px;
     padding-top: 8.9px;
     font-size: 8.9px;
   }
@@ -1022,8 +1100,6 @@ body {
 
   .cards__purchase {
     padding-top: 32.6px;
-    padding-right: 10.3px;
-    padding-bottom: 6px;
   }
 
   .cards__price {
@@ -1035,5 +1111,9 @@ body {
     width: 47px;
     height: 47px;
     background-size: 47.5px;
+  }
+
+  .advantages__title {
+    font-size: 30px;
   }
 }
