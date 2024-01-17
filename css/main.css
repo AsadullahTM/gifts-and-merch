@@ -457,16 +457,20 @@ body {
 /* стили блока с формой */
 
 .main__form-block {
+  min-height: 620px;
   margin-top: 50px;
-  background: url('/images/backgrounds/Rectangle\ 88desctop_form.svg') no-repeat;
-  background-position: 50% 10%;
+  background-image: url('/images/backgrounds/Rectangledesctop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: 100%;
 }
 
 .form-block {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 78px;
 }
 
 .form-block__contact-us {
@@ -504,7 +508,7 @@ body {
 
 .form__text,
 .form__data {
-  width: calc(50% - 88px);
+  width: auto;
   margin-top: 0;
   margin-right: auto;
   padding-top: 0;
@@ -522,7 +526,8 @@ body {
 }
 
 .form__data {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 0;
   list-style: none;
 }
@@ -544,24 +549,234 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 60px;
+  max-width: 336px;
   margin-top: 4px;
   padding: 16px 97px;
   font-size: 16px;
   font-weight: 500;
   color: #fafbfd;
+  cursor: pointer;
   background: #1fab8a;
   border-style: none;
   border-radius: 60px;
   flex-shrink: 0;
 }
 
-.form-block__img {
+.form-block__picture {
   margin: 0;
-  padding-top: 40px;
+  padding: 0;
 }
-/* до 1500px экран */
+
+.form-block__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding-top: 50px;
+}
+
+/* стили футера */
+
+.footer {
+  margin-top: 137px;
+  background: url('/images/backgrounds/footer-desctop.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.footer__main-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 115px;
+}
+
+.footer__contact {
+  margin-top: 14px;
+}
+
+.footer__contact-logo {
+  width: 488px;
+  height: 40px;
+}
+
+.footer__contact-text {
+  width: 439px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 130%;
+  font-weight: 400;
+  letter-spacing: 1.17px;
+  color: #454747;
+}
+
+.footer__contact-tel {
+  display: block;
+  margin-top: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #272525;
+}
+
+.footer__contact-mail {
+  font-size: 16px;
+  font-weight: 400;
+  color: #272525;
+  text-decoration-line: underline;
+}
+
+.footer__contact-list {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  min-width: 116px;
+  margin-top: 26px;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  margin-right: 22px;
+}
+
+.footer__contact-link {
+  width: 32px;
+  height: 32px;
+  font-size: 0;
+  cursor: pointer;
+}
+
+.footer__item--inst {
+  background: url('/images/icons/Instagram-ico.svg') no-repeat;
+  background-position: center;
+}
+
+.footer__item--facebook {
+  background: url('/images/icons/Facebook-ico.svg') no-repeat;
+  background-position: center;
+}
+
+.footer__item--linkdn {
+  background: url('/images/icons/LinkedIn-ico.svg') no-repeat;
+  background-position: center;
+}
+
+.footer__categories,
+.footer__info {
+  max-width: 125px;
+}
+
+.footer__categories-title,
+.footer__info-title,
+.footer__manager-title {
+  margin: 0;
+  font-size: 20px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+.footer__categories-list,
+.footer__info-list {
+  margin: 0;
+  padding-left: 0;
+  font-size: 18px;
+  line-height: 52px;
+  font-weight: 400;
+  list-style: none;
+}
+
+.footer__categories-link,
+.footer__info-link {
+  text-decoration: none;
+  color: #454747;
+}
+
+.footer__categories {
+  margin-right: 135px;
+  margin-left: 172px;
+}
+
+.footer__info {
+  margin-right: 226px;
+}
+
+.footer__manager {
+  max-width: 280px;
+}
+
+.footer__manager-text {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 23px;
+  font-weight: 400;
+  color: #8f90a6;
+}
+
+.footer__manager-tel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 54px;
+  margin-top: 22.5px;
+  background: #fff;
+  border: #000 2px solid;
+  border-radius: 15px;
+}
+
+.footer__manager-input {
+  width: 80%;
+  height: 90%;
+  margin-right: auto;
+  padding-left: 15px;
+  font-size: 14px;
+  line-height: 23px;
+  vertical-align: middle;
+  color: #272525;
+  border: none;
+  border-radius: 15px;
+  outline: none;
+}
+
+.footer__manager-send {
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  padding: 0;
+  cursor: pointer;
+  background-color: #524983;
+  background-image: url('/images/icons/icon_telsend.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 100%;
+}
+
+.footer__politic {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 43px;
+  padding-bottom: 40px;
+  font-size: 13px;
+  color: #9fa3b2;
+}
+
+.footer__politic-link {
+  margin-left: 5px;
+  font-size: 13px;
+  color: #9fa3b2;
+  text-decoration-line: underline;
+}
+
+/* меньше 1500px экран */
 
 @media (width < 1500px) {
   .main-container {
@@ -721,13 +936,57 @@ body {
     flex-wrap: wrap;
   }
 
+  .advantages__section:last-child {
+    margin-bottom: 0;
+  }
+
   .advantages__section {
     width: calc(50% - 14px);
     margin-bottom: 35px;
   }
+
+  .main__form-block {
+    position: relative;
+    min-height: 570px;
+    margin-top: 70px;
+    background-position: 50% 50%;
+    background-size: 200% 100%;
+  }
+
+  .form-block {
+    padding-top: 77px;
+  }
+
+  .form-block__contact-us {
+    width: 60%;
+  }
+
+  .form-block__subtitle {
+    margin-top: 21.7px;
+  }
+
+  .form {
+    margin-top: 60px;
+  }
+
+  .form__text {
+    min-width: 300px;
+    margin-right: 90px;
+  }
+
+  .form__data {
+    min-width: 336px;
+  }
+
+  .form-block__img {
+    top: -79px;
+    right: 0;
+    height: 502px;
+    padding-top: 0;
+  }
 }
 
-/* до 1000px экран */
+/* меньше 1000px экран */
 
 @media (width < 1000px) {
   .main-header {
@@ -844,9 +1103,29 @@ body {
     height: 50px;
     background-size: 50.5px;
   }
+
+  .main__form-block {
+    min-height: 647px;
+    margin-top: 60px;
+    background-position: 50% 50%;
+    background-size: 220% 100%;
+  }
+
+  .form-block__contact-us {
+    width: 100%;
+  }
+
+  .form-block__subtitle {
+    width: 70%;
+  }
+
+  .form-block__img {
+    top: 100px;
+    height: 300px;
+  }
 }
 
-/* до 786px экран */
+/* меньше 768px экран */
 
 @media (width < 768px) {
   .main-header {
@@ -972,9 +1251,78 @@ body {
   .advantages__text {
     margin-top: 15px;
   }
+
+  .main__form-block {
+    margin-top: 70px;
+    background: none;
+  }
+
+  .form-block {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .form-block__contact-us {
+    top: 0;
+    display: flex;
+    padding-left: 20px;
+  }
+
+  .form-block__subtitle {
+    width: 100%;
+    font-size: 28px;
+    line-height: 110.9%;
+  }
+
+  .form-block__text {
+    width: 100%;
+    margin-top: 20px;
+    padding-right: 21px;
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: 1.04px;
+  }
+
+  .form {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 51px;
+  }
+
+  .form__text {
+    max-width: 100%;
+    min-width: 395px;
+    margin-right: 0;
+    padding-right: 65px;
+  }
+
+  .form__data {
+    width: 100%;
+    margin-top: 51px;
+  }
+
+  .form-block__picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 69px;
+    background-image: url('/images/backgrounds/Rectangle768px.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .form-block__img {
+    position: static;
+    padding-top: 33px;
+    padding-bottom: 33px;
+  }
 }
 
-/* до 480px экран */
+/* меньше 480px экран */
 
 @media (width < 480px) {
   html {
@@ -997,7 +1345,7 @@ body {
   .menu__burger {
     width: 24px;
     height: 24px;
-    background-image: url('/images/icons/bars480px.svg');
+    background-image: url('/"images"/"icons"/"bars480px.svg"');
   }
 
   .intro {
@@ -1115,5 +1463,68 @@ body {
 
   .advantages__title {
     font-size: 30px;
+  }
+
+  .main__form-block {
+    margin-top: 80px;
+  }
+
+  .form-block__contact-us {
+    padding-right: 20px;
+  }
+
+  .form-block__title {
+    width: 156px;
+    height: 45px;
+  }
+
+  .form-block__subtitle {
+    margin-top: 16px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .form-block__text {
+    padding-right: 0;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .form {
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .form__text {
+    max-width: 100%;
+    min-width: 278px;
+    padding-right: 0;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .form__data {
+    align-items: center;
+    min-width: 0;
+    margin-top: 40px;
+  }
+
+  .form__input {
+    max-width: 100%;
+    min-width: 280px;
+  }
+
+  .form__btn {
+    max-width: 100%;
+    min-width: 280px;
+  }
+
+  .form-block__picture {
+    margin-top: 40px;
+  }
+
+  .form-block__img img {
+    right: 0;
+    width: 100%;
   }
 }
