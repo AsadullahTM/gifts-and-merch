@@ -278,44 +278,49 @@
     <div class="main-container footer__main-container">
 
       <div class="footer__contact">
+        <div class="div-logo">
+          <picture class="footer__contact-logo">
 
-        <picture class="footer__contact-logo">
+            <source srcset="/images/logo/logo-footer320px.svg" media="(max-width:479px)">
+            <source srcset="/images/logo/logo-footer768px.svg" media="(max-width:999px)">
 
-          <source srcset="/images/main_img/Photo768px.png" media="(max-width:767px)">
-          <source srcset="/images/main_img/Photo1000px.png" media="(max-width:999px)">
-          <source srcset="/images/main_img/Photo1500px.png" media="(max-width:1499px)">
-          <img src="/images/logo/logo.svg" alt="">
+            <img src="/images/logo/logo.svg" alt="">
 
-        </picture>
+          </picture>
 
-        <p class="footer__contact-text">
-          Свежее дыхание в корпоративной жизнии жизни корпоративной дыхание свежее
-        </p>
+          <p class="footer__contact-text">
+            Свежее дыхание в корпоративной жизни и жизни корпоративной дыхание свежее
+          </p>
+        </div>
 
-        <a class="footer__contact-tel" href="tel:+380630130103">+380 630 130 103</a>
+        <div class="div-social">
 
-        <a class="footer__contact-mail" href="mailto:example@gmail.com?subject=Вопрос&body=Привет">example@gmail.com</a>
+          <div class="div-tm">
+            <a class="footer__contact-tel" href="tel:+380630130103">+380 630 130 103</a>
 
-        <ul class="footer__contact-list">
+            <a class="footer__contact-mail" href="mailto:example@gmail.com?subject=Вопрос&body=Привет">example@gmail.com</a>
 
-          <li class="footer__contact-item "><a class="footer__contact-link footer__item--inst" href="#">ig</a>
-          </li>
+          </div>
+          <ul class="footer__contact-list">
 
-          <li class="footer__contact-item ">
-            <a class="footer__contact-link footer__item--facebook" href="#">fb</a>
-          </li>
+            <li class="footer__contact-item "><a class="footer__contact-link footer__item--inst" href="#">ig</a>
+            </li>
 
-          <li class="footer__contact-item ">
-            <a class="footer__contact-link footer__item--linkdn" href="#">ld</a>
-          </li>
+            <li class="footer__contact-item ">
+              <a class="footer__contact-link footer__item--facebook" href="#">fb</a>
+            </li>
 
-        </ul>
+            <li class="footer__contact-item ">
+              <a class="footer__contact-link footer__item--linkdn" href="#">ld</a>
+            </li>
 
+          </ul>
+        </div>
       </div>
 
       <nav class="footer__categories">
 
-        <h2 class="footer__categories-title">Категории</h2>
+        <h3 class="footer__categories-title">Категории</h3>
 
         <ul class="footer__categories-list">
 
@@ -341,7 +346,7 @@
 
       <nav class="footer__info">
 
-        <h2 class="footer__info-title">Информация</h2>
+        <h3 class="footer__info-title">Информация</h3>
 
         <ul class="footer__info-list">
 
@@ -363,20 +368,20 @@
 
       <section class="footer__manager">
 
-        <h2 class="footer__manager-title">Связаться с менеджером</h2>
+        <h3 class="footer__manager-title">Связаться с менеджером</h3>
 
         <p class="footer__manager-text">Есть вопрос на который не нашли ответ? Оставьте контакт и наш менеджер свяжеться с вами</p>
 
         <div class="footer__manager-tel">
           <input class="footer__manager-input" type="tel" placeholder="Номер телефона">
-          <input class="footer__manager-send" type="submit" value="">
+          <button class="footer__manager-send" type="submit" value=""></button>
         </div>
 
       </section>
 
     </div>
 
-    <div class="footer__politic">
+    <div class="main-container footer__politic">
       <p class="footer__politic-text">© 2022. All rights reserved.</p>
       <a class="footer__politic-link" href="">Политика конфиденциальности.</a>
     </div>
