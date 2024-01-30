@@ -35,7 +35,7 @@
         <button class="menu__btn" type="button">ENG</button>
       </div>
 
-      <button class="menu__burger"></button>
+      <button class="menu__burger" type="button" id="open-burger"></button>
 
     </div>
 
@@ -48,7 +48,7 @@
           <ul class="main-header__nav-list nav-list">
             <li><a class="nav-list__link" href="index.html">Все товары</a></li>
             <li><a class="nav-list__link">Наборы</a></li>
-            <li><a class="nav-list__link" href="#">Информация</a></li>
+            <li><a class="nav-list__link" href="information.html">Информация</a></li>
           </ul>
         </nav>
 
@@ -337,11 +337,11 @@
           </li>
 
           <li>
-            <a class="footer__link-nav" href="">Пошив</a>
+            <a class="footer__link-nav">Пошив</a>
           </li>
 
           <li>
-            <a class="footer__link-nav" href="">Производство</a>
+            <a class="footer__link-nav">Производство</a>
           </li>
 
         </ul>
@@ -355,15 +355,15 @@
         <ul class="footer__list-nav">
 
           <li>
-            <a class="footer__link-nav" href="">О нас</a>
+            <a class="footer__link-nav" href="information.html">О нас</a>
           </li>
 
           <li>
-            <a class="footer__link-nav" href="">ЧаВо</a>
+            <a class="footer__link-nav">ЧаВо</a>
           </li>
 
           <li>
-            <a class="footer__link-nav" href="">Контакты</a>
+            <a class="footer__link-nav">Контакты</a>
           </li>
 
         </ul>
@@ -392,5 +392,62 @@
 
   </footer>
 
+  <div class="burger--headen" id="burger-modal">
+
+    <div class=" burger__block">
+
+      <div class="burger__header">
+
+        <div class="burger__lang">
+          <button class="burger__btn burger__btn--active" type="button">RU</button>
+          <span>/</span>
+          <button class="burger__btn" type="button">ENG</button>
+        </div>
+
+        <button class="burger__btn burger__btn--profile" type="button">
+          <img src="./images/icons/user.svg" alt="иконка входа в личный кабинет">
+        </button>
+
+        <button class="burger__btn burger__btn--close" type="button" id="close-burger">
+          <img src="/images/icons/burger-close.svg" alt="">
+        </button>
+
+      </div>
+
+      <nav class="burger__nav">
+        <ul class="burger__nav-list">
+          <li><a class="burger__link" href="index.html">Все товары</a></li>
+          <li><a class="burger__link">Наборы</a></li>
+          <li><a class="burger__link" href="information.html">Информация</a></li>
+        </ul>
+      </nav>
+
+      <div class="burger__contacts">
+
+        <a class="burger__contact-mail" href="mailto:example@gmail.com?subject=Вопрос&body=Привет">example@gmail.com</a>
+
+        <button class="burger__btn burger__btn--phone" type="button"><a class="burger__phone-number" href="tel:+380630130103">+380 630 130 103</a></button>
+
+        <ul class="burger__contact-list">
+
+          <li class="burger__contact-item "><a class="burger__contact-link footer__item--inst" href="#">instagramm</a>
+          </li>
+
+          <li class="burger__contact-item ">
+            <a class="burger__contact-link footer__item--facebook" href="#">facebook</a>
+          </li>
+
+          <li class="burger__contact-item ">
+            <a class="burger__contact-link footer__item--linkdn" href="#">linkendn</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/script.js"></script>
 </body>
 </html>
