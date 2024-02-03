@@ -375,9 +375,7 @@
   </footer>
 
   <div class="burger--headen" id="burger-modal">
-
     <div class="burger__block">
-
       <div class="burger__header">
 
         <div class="burger__lang">
@@ -396,19 +394,19 @@
 
       </div>
 
-      <nav class="burger__nav">
-        <ul class="burger__nav-list">
-          <li><a class="burger__link" href="index.html">Все товары</a></li>
-          <li><a class="burger__link" href="sets.html">Наборы</a></li>
-          <li><a class="burger__link">Информация</a></li>
-        </ul>
-      </nav>
+
+      <ul class="burger__nav-list">
+        <li><a class="burger__link" href="index.html">Все товары</a></li>
+        <li><a class="burger__link" href="sets.html">Наборы</a></li>
+        <li><a class="burger__link">Информация</a></li>
+      </ul>
+
 
       <div class="burger__contacts">
 
         <a class="burger__contact-mail" href="mailto:example@gmail.com?subject=Вопрос&body=Привет">example@gmail.com</a>
 
-        <button class="burger__btn burger__btn--phone" type="button"><a class="burger__phone-number" href="tel:+380630130103">+380 630 130 103</a></button>
+        <a class="burger__phone-number" href="tel:+380630130103">+380 630 130 103</a>
 
         <ul class="burger__contact-list">
 
@@ -424,12 +422,136 @@
           </li>
 
         </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-modal--headen card-modal--opened" id="card-modal">
+
+    <div class="card-modal__box">
+
+      <button class="burger__btn card-modal__btn--close" type="button" id="close-card-modal">
+        <img src="/images/icons/modal-close.svg" alt="">
+      </button>
+
+
+      <div class="card-modal__main-container">
+
+        <div class="card-modal__images">
+          <div class="card-modal__main-img">
+            <button class="card-modal__slider --prew" type="button"><img src="/images/icons/next.png" alt=""></button>
+
+            <button class="card-modal__slider --next" type="button"><img src="/images/icons/next.png" alt=""></button>
+
+            <img class="card-modal__big-img" src="/images/main_img/set1.jpg" alt="">
+          </div>
+
+          <img class="card-modal__mini-img" src="/images/main_img/set2.jpg" alt="">
+          <img class="card-modal__mini-img" src="/images/main_img/set3.jpg" alt="">
+          <img class="card-modal__mini-img" src="/images/main_img/set4.jpg" alt="">
+        </div>
+
+        <section class="card-modal__info-section">
+          <h2 class="card-modal__name">EL003 Elleven Checkpoint-Friendly Compu-Backpack</h2>
+          <div class="card-modal__settings">
+            <ul class="card-modal__color-list">
+              <li class="card-modal__color-item"></li>
+              <li class="card-modal__color-item"></li>
+              <li class="card-modal__color-item"></li>
+            </ul>
+
+            <p class="card-modal__price">Цена $76.43</p>
+          </div>
+          <p class="card-modal__bio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste adipisci provident non, a, quis ipsa laboriosam aliquid labore, ex aut error officiis veniam? Atque voluptas tempore laboriosam, sit voluptates voluptatem!</p>
+          <h3 class="card-modal__table-name">Характеристики</h3>
+          <table class="card-modal__table">
+            <tbody>
+              <tr class="card-modal__string">
+                <th>Материал</th>
+                <td>100% хлопок</td>
+              </tr>
+              <tr class="card-modal__string">
+                <th>Нанесение</th>
+                <td>вышивка, термопечать</td>
+              </tr>
+              <tr class="card-modal__string">
+                <th>Торговая марка</th>
+                <td>Bears</td>
+              </tr>
+              <tr class="card-modal__string">
+                <th>Плотность, г/м</th>
+                <td>150</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button class="card-modal__btn" type="button">Заказать</button>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="basket-modal--headen basket-modal--opened">
+
+    <div class="basket-modal__box">
+
+      <button class="burger__btn card-modal__btn--close" type="button">
+        <img src="/images/icons/modal-close.svg" alt="">
+      </button>
+
+      <div class="basket-modal__content">
+
+        <section class="basket-modal__form">
+          <h2 class="basket-modal__form-name basket-modal__title">Оформить заказ</h2>
+          <p class="basket-modal__form-text">Введите свои контактные данные, и наш менеджер свяжется с Вами в течении 1 часа</p>
+
+          <form class="basket-modal__main-form">
+            <input class="basket-modal__input" type="text" placeholder="Ваше имя">
+            <input class="basket-modal__input" type="email" placeholder="E-mail">
+            <input class="basket-modal__input" type="tel" placeholder="Телефон для связи">
+            <button class="basket-modal__btn" type="button">Заказать</button>
+            <p class="basket-modal__politic">Нажимая "Заказать", Вы даете согласие на обработку Ваших персональных данных</p>
+          </form>
+        </section>
+
+        <section class="basket-modal__basket">
+          <h2 class="basket-modal__basket-name basket-modal__title">Корзина</h2>
+          <ul class="basket-modal__basket-list">
+            <li class="basket-modal__basket-ellement basket-ellement">
+              <img class="basket-ellement__main-img" src="/images/main_img/set1.jpg" alt="">
+              <div class="basket-ellement__name-block">
+                <p class="basket-ellement__name">EL003 Elleven Checkpoint-Friendly Compu-Backpack</p>
+                <div class="basket-ellement__colors">
+                  <p class="basket-ellement__color">Цвет</p>
+                  <p class="basket-ellement__color-circle">green</p>
+                </div>
+              </div>
+              <div class="basket-ellement__quantity">
+                <p class="basket-ellement__text">Кол-во</p>
+                <button class="basket-ellement__button-quntity">-</button>
+                <span class="basket-ellement__show-quntity">5</span>
+                <button class="basket-ellement__button-quntity">+</button>
+              </div>
+              <p class="basket-ellement__price">76$</p>
+              <button class="basket-ellement__close" type="button"><img src="/images/icons/modal-close.svg" alt=""></button>
+            </li>
+          </ul>
+
+          <div class="basket-modal__result">
+            <p class="basket-modal__number">Заказ № 110293</p>
+            <p class="basket-modal__total-price">Всего: $235.80</p>
+          </div>
+
+        </section>
+
+
 
       </div>
 
     </div>
-
   </div>
+
   <script src="/js/script.js"></script>
 </body>
 </html>
