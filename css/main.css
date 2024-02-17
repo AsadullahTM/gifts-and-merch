@@ -771,13 +771,13 @@ b {
   height: 60px;
   font-family: Montserrat, sans-serif;
   font-size: 16px;
-  line-height: 140%;
+  line-height: 60px;
   font-weight: 500;
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
   border: none;
   border-radius: 60px;
-  gap: 10px;
 }
 
 .form-block__btn--black {
@@ -1365,9 +1365,18 @@ b {
 
 .card-modal__btn--close {
   position: absolute;
-  top: 13px;
-  right: 13px;
+  top: 0;
+  right: 0;
+  padding: 0;
+  font-size: 0;
   cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.card-modal__btn--close img {
+  width: 100%;
+  height: 100%;
 }
 
 .card-modal__main-container {
@@ -1795,6 +1804,10 @@ b {
   font-size: 26px;
   font-weight: 700;
   color: #000;
+}
+
+.burger--headen {
+  display: none;
 }
 
 /* меньше 1500px экран */
@@ -3953,10 +3966,6 @@ b {
   }
 
   /* стили модалки бургера */
-
-  .burger--headen {
-    display: none;
-  }
 
   .burger--opened {
     position: fixed;
