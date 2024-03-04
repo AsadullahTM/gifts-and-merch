@@ -119,34 +119,25 @@ const setItems = [
   },
 ];
 
-const basketItems = [{
-  ...setItems[2],
-  color: setItems[2].colors[1],
-  count: 2,
-},
-{
-  ...setItems[1],
-  color: setItems[1].colors[1],
-  count: 1,
-},
-];
+const basketItems = [];
 
 const addBasketItem = (id, colorId) => {
 
-  const itemIN = basketItems.find((el) => {
-    (id === el.id && colorId === el.color) ? console.log(true) : console.log(false);
-  });
+  const itemIn = basketItems.find((el) => (id === el.id && el.colors[colorId] === el.color) ? true : false);
 
-  if (itemIN) {
-
+  if (itemIn) {
+    itemIn.count += 1;
+    return;
   }
+
   basketItems.push({
     ...setItems[id],
     color: setItems[id].colors[colorId],
     count: 1,
   });
-
 };
+
+
 
 const fillItemList = () => {
   const cardsList = document.querySelector('.cards__list');
@@ -207,34 +198,15 @@ const basketList = basket.querySelector('#basket-list');
 const openBasket = document.querySelector('.card-modal__btn');
 const totalBasketSum = basket.querySelector('.basket-modal__total-price');
 
-
-const basketOpen = (evt) => {
-  basket.classList.add('basket-modal--opened');
-  const basketItemsTemp = document.querySelector('#basket-item').content.cloneNode(true);
-
-  const basketItem1 = basketItemsTemp.querySelector('.basket-ellement');
-  const basketItemid = basketItem1.dataset.id = evt.currentTarget.closest('.card-modal--opened').dataset.id;
-  const basketItemColorIndex = evt.currentTarget.closest('.card-modal--opened').dataset.colorIndex;
-
-  const itemImg = basketItem1.querySelector('.basket-ellement__main-img');
-  const itemName = basketItem1.querySelector('.basket-ellement__name');
-  const itemColor = basketItem1.querySelector('.basket-ellement__color-circle');
-  const itemPrice = basketItem1.querySelector('.basket-ellement__price');
-
-  itemImg.src = setItems[basketItemid].images[0];
-  itemName.textContent = setItems[basketItemid].name;
-  itemColor.style = `background-color: ${setItems[basketItemid].colors[basketItemColorIndex]}`;
-  itemPrice.textContent = setItems[basketItemid].price + '$';
-  basketList.appendChild(basketItem1);
-};
-
 const openCartModal = () => {
   let totalSum = 0;
   basketList.innerHTML = '';
   basket.classList.add('basket-modal--opened');
   const dataId = openBasket.closest('.card-modal--opened').dataset.id;
   const coloridx = openBasket.closest('.card-modal--opened').dataset.colorIdx;
+
   addBasketItem(dataId, coloridx);
+
   basketItems.forEach(item => {
     const basketItemsTemp = document.querySelector('#basket-item').content.cloneNode(true);
     const basketItem1 = basketItemsTemp.querySelector('.basket-ellement');
@@ -243,7 +215,7 @@ const openCartModal = () => {
     const itemColor = basketItem1.querySelector('.basket-ellement__color-circle');
     const itemQuqtity = basketItem1.querySelector('.basket-ellement__show-quntity');
     const itemPrice = basketItem1.querySelector('.basket-ellement__price');
-    let sum = (item.price * item.count);
+    const sum = (item.price * item.count);
 
     itemImg.src = item.images[0];
     itemName.textContent = item.name;
@@ -252,9 +224,9 @@ const openCartModal = () => {
     itemPrice.textContent = sum + '$';
     basketList.appendChild(basketItem1);
     totalSum += sum;
-  });
 
-  totalBasketSum.textContent = totalSum + '$';
+    totalBasketSum.textContent = totalSum + '$';
+  });
 
 };
 
@@ -350,10 +322,6 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
         cardModal.dataset.colorIdx = btnEl.dataset.colorIdx;
       });
     });
-
-
-    // openBasket.removeEventListener('click', basketOpen);
-    // openBasket.addEventListener('click', basketOpen);
 
     openBasket.removeEventListener('click', openCartModal);
     openBasket.addEventListener('click', openCartModal);
