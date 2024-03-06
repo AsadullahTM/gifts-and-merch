@@ -7,20 +7,24 @@ document.getElementById('close-burger').addEventListener('click', function () {
   document.getElementById('burger-modal').classList.remove('burger--opened');
 });
 
-document.getElementById('close-card-modal').addEventListener('click', function () {
-  document.getElementById('card-modal').classList.remove('card-modal--opened');
-  document.getElementById('card-modal-color-list').innerHTML = '';
-  document.querySelector('.card-modal__table tbody').innerHTML = '';
-  document.getElementById('mini-images').innerHTML = '';
-  document.getElementById('table-char').classList.remove('table--closed');
-  document.querySelector('.card-modal__table-name img').classList.remove('--rotate');
-});
+if (document.getElementById('close-card-modal')) {
+  document.getElementById('close-card-modal').addEventListener('click', function () {
+    document.getElementById('card-modal').classList.remove('card-modal--opened');
+    document.getElementById('card-modal-color-list').innerHTML = '';
+    document.querySelector('.card-modal__table tbody').innerHTML = '';
+    document.getElementById('mini-images').innerHTML = '';
+    document.getElementById('table-char').classList.remove('table--closed');
+    document.querySelector('.card-modal__table-name img').classList.remove('--rotate');
+  });
+}
 
+if (document.querySelector('.card-modal__table-name')) {
+  document.querySelector('.card-modal__table-name').addEventListener('click', function () {
+    document.getElementById('table-char').classList.toggle('table--closed');
+    document.querySelector('.card-modal__table-name img').classList.toggle('--rotate');
+  });
+}
 
-document.querySelector('.card-modal__table-name').addEventListener('click', function () {
-  document.getElementById('table-char').classList.toggle('table--closed');
-  document.querySelector('.card-modal__table-name img').classList.toggle('--rotate');
-});
 
 
 const setItems = [
@@ -118,14 +122,30 @@ const setItems = [
   },
 ];
 
-const basketItems = [];
+// eslint-disable-next-line no-unused-vars
+let basketItems = [];
+
+const setBasketItemsLS = (newBasketItems) => {
+  window.localStorage.setItem('basketItems', JSON.stringify(newBasketItems));
+};
+
+const getBasketItemsLS = () => {
+  const basketItemsString = window.localStorage.getItem('basketItems');
+  return JSON.parse(basketItemsString) || [];
+};
+
+
+
+getBasketItemsLS();
+
 
 const addBasketItem = (id, colorId) => {
-
+  const basketItems = getBasketItemsLS();
   const itemIn = basketItems.find((el) => (id === el.id && el.colors[colorId] === el.color) ? true : false);
 
   if (itemIn) {
     itemIn.count += 1;
+    setBasketItemsLS(basketItems);
     return;
   }
 
@@ -134,25 +154,32 @@ const addBasketItem = (id, colorId) => {
     color: setItems[id].colors[colorId],
     count: 1,
   });
+
+  setBasketItemsLS(basketItems);
 };
 
-const sideCartToogle = () => {
-  basketItems.length ? document.querySelector('.side-cart').classList.add('--active') : document.querySelector('.side-cart').classList.remove('--active');
-};
 
 const totalSum = () => {
+  const basketItems = getBasketItemsLS();
   let sum = 0;
-  let quant = 0;
+  let count = 0;
   basketItems.forEach(el => {
     sum += (el.count * el.price);
-    quant += el.count;
+    count += el.count;
   });
 
   document.querySelector('.side-cart__sum').textContent = sum + '$';
-  document.querySelector('.side-cart__count').textContent = quant;
+  document.querySelector('.side-cart__count').textContent = count;
   document.querySelector('.basket-modal__total-price').textContent = sum + '$';
 };
 
+const sideCartToogle = () => {
+  const basketItems = getBasketItemsLS();
+  basketItems.length ? document.querySelector('.side-cart').classList.add('--active') : document.querySelector('.side-cart').classList.remove('--active');
+  totalSum();
+};
+
+sideCartToogle();
 
 const fillItemList = () => {
   const cardsList = document.querySelector('.cards__list');
@@ -212,16 +239,8 @@ const basket = document.querySelector('.basket-modal--headen');
 const basketList = basket.querySelector('#basket-list');
 const openBasket = document.querySelector('.card-modal__btn');
 
-const openCartModal = () => {
-  basketList.innerHTML = '';
-  basket.classList.add('basket-modal--opened');
-  const dataId = openBasket.closest('.card-modal--opened').dataset.id;
-  const coloridx = openBasket.closest('.card-modal--opened').dataset.colorIdx;
-
-  addBasketItem(dataId, coloridx);
-  sideCartToogle();
-  totalSum();
-
+const fillBasket = () => {
+  const basketItems = getBasketItemsLS();
   basketItems.forEach((item) => {
     const basketItemsTemp = document.querySelector('#basket-item').content.cloneNode(true);
     const basketItem1 = basketItemsTemp.querySelector('.basket-ellement');
@@ -246,29 +265,33 @@ const openCartModal = () => {
 
     itemMinus.addEventListener('click', () => {
       item.count--;
+      itemQuqtity.textContent = item.count;
+      itemPrice.textContent = sum() + '$';
+      setBasketItemsLS(basketItems);
+      totalSum();
 
-      if (item.count < 1) {
+      if (item.count === 0) {
         const newIndex = basketItems.findIndex(el =>
         ((itemMinus.closest('.basket-ellement').dataset.id === el.id) && (itemMinus.closest('.basket-ellement').dataset.colorIdx === el.color)
         ));
+
         basketList.removeChild(basketItem1);
         basketItems.splice(newIndex, 1);
+        setBasketItemsLS(basketItems);
 
         if (!basketItems.length) {
           basket.classList.toggle('basket-modal--opened');
           sideCartToogle();
+          localStorage.clear();
         }
       }
-
-      itemQuqtity.textContent = item.count;
-      itemPrice.textContent = sum() + '$';
-      totalSum();
     });
 
     itemPlus.addEventListener('click', () => {
       item.count++;
       itemQuqtity.textContent = item.count;
       itemPrice.textContent = sum() + '$';
+      setBasketItemsLS(basketItems);
       totalSum();
     });
 
@@ -278,13 +301,26 @@ const openCartModal = () => {
       ));
       basketList.removeChild(basketItem1);
       basketItems.splice(newIndex, 1);
+      setBasketItemsLS(basketItems);
       if (!basketItems.length) {
         basket.classList.toggle('basket-modal--opened');
         sideCartToogle();
+        localStorage.clear();
       }
       totalSum();
     });
   });
+};
+
+const openCartModal = () => {
+  const dataId = openBasket.closest('.card-modal--opened').dataset.id;
+  const coloridx = openBasket.closest('.card-modal--opened').dataset.colorIdx;
+  addBasketItem(dataId, coloridx);
+  sideCartToogle();
+
+  basketList.innerHTML = '';
+  basket.classList.add('basket-modal--opened');
+  fillBasket();
 };
 
 document.querySelectorAll(('.cards__info')).forEach(el => {
@@ -296,7 +332,6 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
       evt.stopPropagation();
       addBasketItem(dataID, el.closest('.cards__item').dataset.colorIdx);
       sideCartToogle();
-      totalSum();
     });
 
     basket.querySelector('.card-modal__btn--close').addEventListener('click', function () {
@@ -389,74 +424,14 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
 });
 
 document.querySelector('.side-cart').addEventListener('click', () => {
-  document.querySelector('.basket-modal--headen').classList.add('basket-modal--opened');
+  document.querySelector('.basket-modal--headen').classList.toggle('basket-modal--opened');
   document.querySelector('#basket-list').innerHTML = '';
-
-  basketItems.forEach((item) => {
-    const basketItemsTemp = document.querySelector('#basket-item').content.cloneNode(true);
-    const basketItem1 = basketItemsTemp.querySelector('.basket-ellement');
-    const itemImg = basketItem1.querySelector('.basket-ellement__main-img');
-    const itemName = basketItem1.querySelector('.basket-ellement__name');
-    const itemColor = basketItem1.querySelector('.basket-ellement__color-circle');
-    const itemQuqtity = basketItem1.querySelector('.basket-ellement__show-quntity');
-    const itemPrice = basketItem1.querySelector('.basket-ellement__price');
-    const itemMinus = basketItem1.querySelector('#item-minus');
-    const itemPlus = basketItem1.querySelector('#item-plus');
-    const itemDelete = basketItem1.querySelector('#item-delete');
-    const sum = () => item.price * item.count;
-
-    itemImg.src = item.images[0];
-    itemName.textContent = item.name;
-    itemColor.style = `background-color: ${item.color}`;
-    itemQuqtity.textContent = item.count;
-    itemPrice.textContent = sum() + '$';
-    basketItem1.dataset.id = item.id;
-    basketItem1.dataset.colorIdx = item.color;
-    basketList.appendChild(basketItem1);
-
-    itemMinus.addEventListener('click', () => {
-      item.count--;
-
-      if (item.count < 1) {
-        const newIndex = basketItems.findIndex(el =>
-        ((itemMinus.closest('.basket-ellement').dataset.id === el.id) && (itemMinus.closest('.basket-ellement').dataset.colorIdx === el.color)
-        ));
-        basketList.removeChild(basketItem1);
-        basketItems.splice(newIndex, 1);
-
-        if (!basketItems.length) {
-          basket.classList.toggle('basket-modal--opened');
-          sideCartToogle();
-        }
-      }
-
-      itemQuqtity.textContent = item.count;
-      itemPrice.textContent = sum() + '$';
-      totalSum();
-    });
-
-    itemPlus.addEventListener('click', () => {
-      item.count++;
-      itemQuqtity.textContent = item.count;
-      itemPrice.textContent = sum() + '$';
-      totalSum();
-    });
-
-    itemDelete.addEventListener('click', () => {
-      const newIndex = basketItems.findIndex(el =>
-      ((basketItem1.dataset.id === el.id) && (basketItem1.dataset.colorIdx === el.color)
-      ));
-      basketList.removeChild(basketItem1);
-      basketItems.splice(newIndex, 1);
-      if (!basketItems.length) {
-        basket.classList.toggle('basket-modal--opened');
-        sideCartToogle();
-      }
-      totalSum();
-    });
-  });
-}
-);
+  fillBasket();
+  basket.querySelector('.card-modal__btn--close').addEventListener('click', () => {
+    basket.classList.remove('basket-modal--opened');
+  }
+  );
+});
 
 document.querySelectorAll('.questions__block').forEach(item => {
   item.addEventListener('click', function () {
