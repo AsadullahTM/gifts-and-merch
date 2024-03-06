@@ -122,7 +122,7 @@ const setItems = [
   },
 ];
 
-// eslint-disable-next-line no-unused-vars
+
 let basketItems = [];
 
 const setBasketItemsLS = (newBasketItems) => {
