@@ -7,6 +7,23 @@ document.getElementById('close-burger').addEventListener('click', function () {
   document.getElementById('burger-modal').classList.remove('burger--opened');
 });
 
+if (document.querySelector('#card-modal')) {
+  document.querySelector('#card-modal').addEventListener('click', evt => {
+    evt.currentTarget.classList.remove('card-modal--opened');
+    document.getElementById('card-modal').classList.remove('card-modal--opened');
+    document.getElementById('card-modal-color-list').innerHTML = '';
+    document.querySelector('.card-modal__table tbody').innerHTML = '';
+    document.getElementById('mini-images').innerHTML = '';
+    document.getElementById('table-char').classList.remove('table--closed');
+    document.querySelector('.card-modal__table-name img').classList.remove('--rotate');
+  });
+
+  document.querySelector('.card-modal__box').addEventListener('click', evt => {
+    evt.stopPropagation();
+  });
+
+}
+
 if (document.getElementById('close-card-modal')) {
   document.getElementById('close-card-modal').addEventListener('click', function () {
     document.getElementById('card-modal').classList.remove('card-modal--opened');
@@ -168,9 +185,9 @@ const totalSum = () => {
     count += el.count;
   });
 
-  document.querySelector('.side-cart__sum').textContent = sum + '$';
+  document.querySelector('.side-cart__sum').textContent = parseFloat(sum.toFixed(2)) + '$';
   document.querySelector('.side-cart__count').textContent = count;
-  document.querySelector('.basket-modal__total-price').textContent = sum + '$';
+  document.querySelector('.basket-modal__total-price').textContent = parseFloat(sum.toFixed(2)) + '$';
 };
 
 const sideCartToogle = () => {
@@ -252,7 +269,7 @@ const fillBasket = () => {
     const itemMinus = basketItem1.querySelector('#item-minus');
     const itemPlus = basketItem1.querySelector('#item-plus');
     const itemDelete = basketItem1.querySelector('#item-delete');
-    const sum = () => item.price * item.count;
+    const sum = () => parseFloat((item.price * item.count).toFixed(2));
 
     itemImg.src = item.images[0];
     itemName.textContent = item.name;

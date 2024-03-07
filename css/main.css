@@ -552,6 +552,7 @@ b {
 .cards__info {
   padding: 13px 14px 9px 16px;
   font-size: 0;
+  cursor: pointer;
 }
 
 .cards__name {
@@ -1726,6 +1727,7 @@ b {
   height: 18px;
   font-size: 14px;
   text-align: center;
+  cursor: pointer;
   background-color: white;
   border: 0.5px solid #272525;
   border-radius: 2px;
@@ -1757,6 +1759,7 @@ b {
   margin-left: 20px;
   padding: 0;
   font-size: 0;
+  cursor: pointer;
   background: none;
   border: none;
 }
@@ -2434,7 +2437,7 @@ b {
     padding: 0;
     font-size: 16px;
     color: grey;
-    cursor: pointer;
+    cursor: not-allowed;
     background-color: rgb(28 28 28 / 0);
     border: none;
   }
