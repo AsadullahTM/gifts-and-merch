@@ -133,23 +133,21 @@
 
       <div class="main-container form-block">
 
-        <div class="form-block__contact-us">
+        <div class="form-block__contact-us contact__us">
 
           <img class="form-block__title" src="./images/main_img/Pangolin.png" alt="">
           <h2 id="create-box" class="form-block__subtitle">Как создать бокс по Вашей идее?</h2>
           <p class="form-block__text">У вас своя уникальная идея для бокса или хотите все стилизовать к одному виду?</p>
 
-          <form class="form-block__form form" action="" method="post">
+          <form class="form-block__form form form__validation" action="" method="post">
 
             <p class="form__text">Введите свои контактные данные, и наш менеджер свяжется с Вами <span class="form__text--green">в течении 15 минут</span></p>
 
             <div class="form__data">
-
-              <input class="form__input" type="text" placeholder="Ваше Имя">
-              <input class="form__input" type="text" placeholder="Ваша электронная почта">
-              <input class="form__input" type="text" placeholder="Ваш номер телефона">
+              <input class="form__input" name="name" type="text" placeholder="Ваше имя" required>
+              <input class="form__input" type="email" placeholder="Ваша электронная почта" minlength="7" required>
+              <input class="form__input" name="tel" type="phone" placeholder="Ваш номер телефона" minlength="6" required>
               <button class="form__btn" type="submit">Заказать</button>
-
             </div>
 
           </form>
@@ -276,10 +274,10 @@
 
         <p class="footer__manager-text">Есть вопрос на который не нашли ответ? Оставьте контакт и наш менеджер свяжеться с вами</p>
 
-        <div class="footer__manager-tel">
-          <input class="footer__manager-input" type="tel" placeholder="Номер телефона">
+        <form class="footer__manager-tel form__validation">
+          <input class="footer__manager-input" name="tel" type="phone" placeholder="Ваш номер телефона" minlength="6" required>
           <button class="footer__manager-send" type="submit" value=""></button>
-        </div>
+        </form>
 
       </section>
 
@@ -382,7 +380,7 @@
             </tbody>
           </table>
 
-          <button class="card-modal__btn" type="button">Заказать</button>
+          <button class="card-modal__btn" type="submit">Заказать</button>
         </section>
 
       </div>
@@ -403,12 +401,14 @@
           <h2 class="basket-modal__form-name basket-modal__title">Оформить заказ</h2>
           <p class="basket-modal__form-text">Введите свои контактные данные, и наш менеджер свяжется с Вами в течении 1 часа</p>
 
-          <form class="basket-modal__main-form">
-            <input class="basket-modal__input" type="text" placeholder="Ваше имя">
-            <input class="basket-modal__input" type="email" placeholder="E-mail">
-            <input class="basket-modal__input" type="tel" placeholder="Телефон для связи">
-            <button class="basket-modal__btn" type="button">Заказать</button>
+          <form class="basket-modal__main-form form__validation" action="" method="post">
+
+            <input class="basket-modal__input" name="name" type="text" placeholder="Ваше имя" required>
+            <input class="basket-modal__input" type="email" placeholder="Ваша электронная почта" minlength="7" required>
+            <input class="basket-modal__input" name="tel" type="phone" placeholder="Ваш номер телефона" minlength="6" required>
+            <button class="basket-modal__btn" type="submit">Заказать</button>
             <p class="basket-modal__politic">Нажимая "Заказать", Вы даете согласие на обработку Ваших персональных данных</p>
+
           </form>
         </section>
 
@@ -487,6 +487,16 @@
       <button class="basket-ellement__close" id="item-delete" type="button"><img src="./images/icons/modal-close.svg" alt=""></button>
     </li>
   </template>
+
+  <div class="modal--headen" id="order-success">
+    <div class="gap order-success">
+      <button class="modal__close card-modal__btn--close" type="button">
+        <img class="modal__close-img" src="./images/icons/modal-close.svg" alt="">
+      </button>
+      <p class="order-success__title">Заказ успешно оформлен</p>
+      <p class="order-success__sub-title">Наш менеджер свяжется с&nbsp;Вами в&nbsp;ближайшее время</p>
+    </div>
+  </div>
 
   <script src="./js/script.js"></script>
 </body>

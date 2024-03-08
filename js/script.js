@@ -43,7 +43,6 @@ if (document.querySelector('.card-modal__table-name')) {
 }
 
 
-
 const setItems = [
   {
     id: '0',
@@ -454,5 +453,57 @@ document.querySelectorAll('.questions__block').forEach(item => {
   item.addEventListener('click', function () {
     item.closest('.questions__item').classList.toggle('questions__item--opened');
   });
+});
+
+const addCallValidation = () => {
+  const forms = document.querySelectorAll('.form__validation');
+  const orderSucessModal = document.querySelector('#order-success');
+  forms.forEach(form => {
+    const NameEl = form.querySelector('input[name="name"]');
+    const emailEl = form.querySelector('input[type="email"]');
+    const telEL = form.querySelector('input[type="phone"]');
+
+    form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      orderSucessModal.classList.add('modal--opened');
+
+      orderSucessModal.querySelector('button[type="button"]').addEventListener('click', () => {
+        orderSucessModal.classList.remove('modal--opened');
+      });
+
+      if (form.closest('.basket-modal--headen')) {
+        localStorage.clear();
+        sideCartToogle();
+
+        if (document.querySelector('#card-modal')) {
+          basket.classList.remove('basket-modal--opened');
+          document.querySelector('#card-modal').classList.remove('card-modal--opened');
+        }
+      }
+
+      if (NameEl && telEL) {
+        NameEl.value = '';
+        emailEl.value = '';
+      }
+
+      telEL.value = '';
+    });
+  });
+};
+
+addCallValidation();
+
+new Swiper('.swiper', {
+  speed: 400,
+  spaceBetween: 100,
+  slidesPerView: 1,
+  loop: true,
+  navigation: {
+    nextEl: '.brands-next-btn',
+    prevEl: '.brands-prev-btn',
+  },
+  autoplay: {
+    delay: 3000,
+  }
 });
 

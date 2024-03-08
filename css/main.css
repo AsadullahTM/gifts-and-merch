@@ -956,6 +956,7 @@ b {
   margin: 0;
   font-size: 48px;
   font-weight: 700;
+  text-align: center;
   color: #222227;
 }
 
@@ -992,6 +993,18 @@ b {
 
 .brands-section__item {
   padding: 0;
+}
+
+.brands-section__item img {
+  height: 63px;
+}
+
+.swiper-slide {
+  width: auto;
+}
+
+.brands-section__item:last-child {
+  display: none;
 }
 
 /* стили вовросов */
@@ -1793,6 +1806,48 @@ b {
 
 .burger--headen {
   display: none;
+}
+
+.modal--headen {
+  display: none;
+}
+
+.modal--opened {
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(33 33 33 / 0.36);
+}
+
+.order-success {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 25px 90px 25px 25px;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow:
+    0 8.028px 8.028px -4.014px rgb(26 32 44 / 0.04),
+    0 16.057px 20.071px -4.014px rgb(26 32 44 / 0.1);
+}
+
+.order-success__title {
+  margin: 0;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.order-success__sub-title {
+  margin: 0;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 /* меньше 1500px экран */
@@ -4104,6 +4159,22 @@ b {
 
   .fw600 {
     font-weight: 600;
+  }
+
+  .order-success {
+    max-width: 300px;
+    padding: 16px;
+  }
+
+  .order-success__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .order-success__sub-title {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 

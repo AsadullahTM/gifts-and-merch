@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gifts & Merch</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="./css/vendor/normalize.css">
   <link rel="stylesheet" href="./css/fonts.css">
   <link rel="stylesheet" href="./css/main.css">
+
 </head>
 <body>
 
@@ -217,20 +219,20 @@
         <img class="from-block__decor-img from-block__rocket2" src="./images/main_img/rocket 2.svg" alt="">
         <img class="from-block__decor-img from-block__spiral" src="./images/main_img/curve.svg" alt="">
 
-        <div class="form-block__contact-us form-block__contact-us--margin-top">
+        <div class="form-block__contact-us form-block__contact-us--margin-top contact__us">
 
           <h2 class="form-block__subtitle form-block__subtitle--less-fontsize">У вас своя <span>уникальная</span> идея по разработке мерча?</h2>
           <p class="form-block__text form-block__text--less-margin">Изготовим мерч по вашему дизайну. Расскажем лайфхаки и ознакомим с технологией производства, предоставим образцы матералов.</p>
 
-          <form class="form-block__form form form--more-margin" action="" method="post">
+          <form class="form-block__form form form--more-margin form__validation" action="" method="post">
 
             <p class="form__text form__text--width">Введите свои контактные данные, и наш менеджер свяжется с Вами <span class="form__text--green">в течении 15 минут</span></p>
 
             <div class="form__data form__data--inline">
 
-              <input class="form__input" type="text" placeholder="Ваше Имя">
-              <input class="form__input" type="text" placeholder="Ваша электронная почта">
-              <input class="form__input" type="text" placeholder="Ваш номер телефона">
+              <input class="form__input" name="name" type="text" placeholder="Ваше Имя" required>
+              <input class="form__input" name="email" type="email" placeholder="Ваша электронная почта" minlength="7" required>
+              <input class="form__input" name="tel" type="phone" placeholder="Ваш номер телефона" minlength="6" required>
               <button class="form__btn form__btn--min-width" type="submit">Заказать</button>
 
             </div>
@@ -243,21 +245,22 @@
 
       <h3 class="brands-section__title">С нами соотрудничают</h3>
 
-      <div class="brands-section__block">
+      <div class="swiper brands-section__block">
 
-        <button class="brands-section__btn" type="button"></button>
-        <ul class="brands-section__list">
-          <li class="brands-section__item"><img src="./images/logo/Logo_NIKE 1.png" alt=""></li>
-          <li class="brands-section__item"><img src="./images/logo/Coca-Cola_logo 1.png" alt=""></li>
-          <li class="brands-section__item"><img src="./images/logo/Group 6.png" alt=""></li>
-          <li class="brands-section__item"><img src="./images/logo/logo-full-01-1 1.png" alt=""></li>
-          <li class="brands-section__item"><img src="./images/logo/logo-white 1.png" alt=""></li>
+        <button class="brands-next-btn brands-section__btn" type="button"></button>
+        <ul class="swiper-wriper brands-section__list ">
+          <li class="swiper-slide brands-section__item "><img src="./images/logo/Logo_NIKE 1.png" alt=""></li>
+          <li class="swiper-slide brands-section__item"><img src="./images/logo/Coca-Cola_logo 1.png" alt=""></li>
+          <li class="swiper-slide brands-section__item swiper-slide"><img src="./images/logo/Group 6.png" alt=""></li>
+          <li class="swiper-slide brands-section__item"><img src="./images/logo/logo-full-01-1 1.png" alt=""></li>
+          <li class="swiper-slide brands-section__item"><img src="./images/logo/logo-white 1.png" alt=""></li>
+          <li class="swiper-slide brands-section__item "><img src="./images/logo/logo-adidas.png" alt=""></li>
         </ul>
-        <button class="brands-section__btn" type="button"></button>
+        <button class="brands-prev-btn brands-section__btn " type="button"></button>
+
       </div>
+
     </section>
-
-
   </main>
 
   <footer class="footer footer--small-margin">
@@ -362,10 +365,10 @@
 
         <p class="footer__manager-text">Есть вопрос на который не нашли ответ? Оставьте контакт и наш менеджер свяжеться с вами</p>
 
-        <div class="footer__manager-tel">
-          <input class="footer__manager-input" type="tel" placeholder="Номер телефона">
+        <form class="footer__manager-tel form__validation">
+          <input class="footer__manager-input" name="tel" type="phone" placeholder="Ваш номер телефона" minlength="6" required>
           <button class="footer__manager-send" type="submit" value=""></button>
-        </div>
+        </form>
 
       </section>
 
@@ -444,11 +447,11 @@
           <h2 class="basket-modal__form-name basket-modal__title">Оформить заказ</h2>
           <p class="basket-modal__form-text">Введите свои контактные данные, и наш менеджер свяжется с Вами в течении 1 часа</p>
 
-          <form class="basket-modal__main-form">
-            <input class="basket-modal__input" type="text" placeholder="Ваше имя">
-            <input class="basket-modal__input" type="email" placeholder="E-mail">
-            <input class="basket-modal__input" type="tel" placeholder="Телефон для связи">
-            <button class="basket-modal__btn" type="button">Заказать</button>
+          <form class="basket-modal__main-form form__validation">
+            <input class="basket-modal__input" name="name" type="text" placeholder="Ваше имя" required>
+            <input class="basket-modal__input" type="email" placeholder="Ваша электронная почта" minlength="7" required>
+            <input class="basket-modal__input" name="tel" type="phone" placeholder="Ваш номер телефона" minlength="6" required>
+            <button class="basket-modal__btn" type="submit">Заказать</button>
             <p class="basket-modal__politic">Нажимая "Заказать", Вы даете согласие на обработку Ваших персональных данных</p>
           </form>
         </section>
@@ -490,6 +493,17 @@
     </li>
   </template>
 
+  <div class="modal--headen" id="order-success">
+    <div class="gap order-success">
+      <button class="modal__close card-modal__btn--close" type="button">
+        <img class="modal__close-img" src="./images/icons/modal-close.svg" alt="">
+      </button>
+      <p class="order-success__title">Заказ успешно оформлен</p>
+      <p class="order-success__sub-title">Наш менеджер свяжется с&nbsp;Вами в&nbsp;ближайшее время</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="./js/script.js"></script>
 </body>
 </html>
