@@ -963,14 +963,16 @@ b {
 .brands-section__block {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   margin-top: 78px;
+  padding: 0 82px;
 }
 
 .brands-section__btn {
+  position: absolute;
+  align-self: center;
+  z-index: 2;
   width: 40px;
   height: 40px;
-  margin-top: 16px;
   cursor: pointer;
   background: url('../images/icons/next.png');
   background-repeat: no-repeat;
@@ -978,33 +980,35 @@ b {
   border-style: none;
 }
 
-.brands-section__btn:first-child {
+.brands-next-btn {
+  left: 0;
   transform: scale(-1, 1);
+}
+
+.brands-prev-btn {
+  right: 0;
 }
 
 .brands-section__list {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0 42px;
+  height: auto;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .brands-section__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 63px;
   padding: 0;
 }
 
 .brands-section__item img {
-  height: 63px;
-}
-
-.swiper-slide {
-  width: auto;
-}
-
-.brands-section__item:last-child {
-  display: none;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 /* стили вовросов */
@@ -2212,10 +2216,6 @@ b {
     max-width: 65%;
   }
 
-  .brands-section__item:nth-of-type(n + 4) {
-    display: none;
-  }
-
   .questions {
     min-height: auto;
     margin-top: 86px;
@@ -2838,14 +2838,6 @@ b {
     font-size: 28px;
   }
 
-  .brands-section__list {
-    justify-content: space-around;
-  }
-
-  .brands-section__item:nth-of-type(n + 3) {
-    display: none;
-  }
-
   .questions {
     margin-top: 80px;
   }
@@ -3371,21 +3363,13 @@ b {
   }
 
   .brands-section__block {
-    align-items: center;
     margin-top: 42px;
+    padding: 0;
   }
 
-  .brands-section__btn {
-    margin-top: 0;
-  }
-
-  .brands-section__list {
-    margin: 0;
-  }
-
-  .brands-section__item img {
-    width: 111px;
+  .brands-section__item {
     height: 40px;
+    padding: 0 40px;
   }
 
   .contacts {
@@ -3589,576 +3573,577 @@ b {
   .basket-modal__total-price {
     font-size: 22px;
   }
+}
 
-  /* меньше 480px экран */
+/* меньше 480px экран */
 
-  @media (width < 480px) {
-    .main-header {
-      min-height: 681px;
-    }
-
-    .main-header--min-height {
-      min-height: 0;
-    }
-
-    .menu {
-      min-height: 50px;
-    }
-
-    .menu__logo img {
-      height: 10px;
-    }
-
-    .menu__burger {
-      width: 24px;
-      height: 24px;
-      background-size: 100%;
-    }
-
-    .intro__section {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .intro__title {
-      width: auto;
-      margin-top: 33px;
-      font-size: 28px;
-      text-align: center;
-    }
-
-    .intro__title--big-margin {
-      font-size: 24px;
-    }
-
-    .intro__sub-title {
-      margin-top: 14px;
-      margin-right: auto;
-      margin-left: auto;
-      font-size: 15px;
-      text-align: center;
-    }
-
-    .intro__preferences-item {
-      margin-top: 25px;
-    }
-
-    .intro__btns {
-      align-self: center;
-    }
-
-    .intro__btn-donebox {
-      margin-top: 300px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    .intro__createbox {
-      display: block;
-    }
-
-    .intro-content__image1 {
-      right: -150px;
-      bottom: 100px;
-      height: 350px;
-    }
-
-    .intro-content__image1--right {
-      right: -265px;
-      bottom: 90px;
-      height: 344px;
-    }
-
-    .intro-content__image2 {
-      right: -20px;
-      bottom: 100px;
-      height: 200px;
-    }
-
-    .intro__wave {
-      left: -250px;
-      width: 1500px;
-      transform: scaleX(-1);
-    }
-
-    .intro__wave--higher {
-      bottom: 0;
-      left: -150px;
-      width: 1671px;
-      height: 117px;
-    }
-
-    .intro__section--width {
-      min-width: auto;
-    }
-
-    .intro-content__image1--info {
-      right: auto;
-      bottom: 30px;
-      left: auto;
-      transform: scale(0.8);
-    }
-
-    .cards__subtitle {
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    .cards__list {
-      margin-top: 10px;
-    }
-
-    .cards__item {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .cards__info {
-      padding: 11.1px 10.3px 6px 17.8px;
-    }
-
-    .cards__name {
-      font-size: 17.8px;
-    }
-
-    .cards__overview {
-      padding-top: 8.9px;
-      font-size: 8.9px;
-    }
-
-    .cards__color {
-      padding-top: 12.4px;
-    }
-
-    .cards__color-item {
-      margin-right: 3.4px;
-      margin-left: 3.4px;
-    }
-
-    .cards__color-btn {
-      width: 17.8px;
-      height: 17.8px;
-    }
-
-    .cards__purchase {
-      margin-top: 32.6px;
-    }
-
-    .cards__price {
-      font-size: 17.8px;
-    }
-
-    .cards__buy {
-      width: 47px;
-      height: 47px;
-      background-size: 47.5px;
-    }
-
-    .advantages--collumn {
-      margin-top: 0;
-    }
-
-    .main__form-block {
-      margin-top: 80px;
-    }
-
-    .form-block__contact-us {
-      align-items: center;
-      padding-right: 20px;
-    }
-
-    .form-block__title {
-      width: 156px;
-      height: 45px;
-    }
-
-    .form-block__subtitle {
-      margin-top: 16px;
-      font-size: 24px;
-      text-align: center;
-    }
-
-    .form-block__text {
-      font-size: 15px;
-      text-align: center;
-    }
-
-    .form {
-      align-items: center;
-      justify-content: center;
-      margin-top: 40px;
-    }
-
-    .form__text {
-      min-width: 278px;
-      padding-right: 0;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    .form__data {
-      width: 100%;
-      max-width: 100%;
-      margin-top: 40px;
-      margin-left: auto;
-    }
-
-    .form__input {
-      width: 100%;
-    }
-
-    .form__btn {
-      max-width: 100%;
-    }
-
-    .form-block__picture {
-      margin-top: 40px;
-    }
-
-    .form-block__img img {
-      right: 0;
-      width: 100%;
-    }
-
-    .main__form-block--gradient {
-      margin-top: 28px;
-      background-position: 50% 20%;
-      background-size: 100%;
-    }
-
-    .form-block__contact-us--margin-top {
-      margin-top: 250px;
-    }
-
-    .from-block__rocket1 {
-      top: 165px;
-      right: -20px;
-    }
-
-    .from-block__rocket2 {
-      top: 170px;
-      left: -50px;
-    }
-
-    .form-block__subtitle--less-fontsize {
-      min-height: 93px;
-    }
-
-    .form-block__text--less-margin {
-      min-height: 95px;
-    }
-
-    .form--more-margin {
-      margin-top: 60px;
-    }
-
-    .form__data--inline {
-      margin-left: 0;
-    }
-
-    .options__section {
-      margin-top: 24px;
-      text-align: center;
-    }
-
-    .options__title {
-      max-width: 100%;
-      font-size: 20px;
-    }
-
-    .options__text {
-      max-width: 100%;
-      font-size: 15px;
-    }
-
-    .options__item img {
-      width: 65px;
-    }
-
-    .brands-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 345px;
-      margin-top: 78px;
-    }
-
-    .brands-section__title {
-      font-size: 24px;
-    }
-
-    .brands-section__block {
-      flex-direction: column;
-      height: 100%;
-      margin-top: 21px;
-    }
-
-    .brands-section__btn:first-child {
-      transform: rotate(-90deg);
-    }
-
-    .brands-section__btn:last-child {
-      transform: rotate(90deg);
-    }
-
-    .brands-section__list {
-      flex-direction: column;
-      align-items: center;
-      height: calc(100% - 80px);
-    }
-
-    .questions__list {
-      margin-top: 52px;
-    }
-
-    .questions__title {
-      font-size: 28px;
-    }
-
-    .questions__subtitle {
-      margin-right: auto;
-      margin-left: auto;
-      font-size: 24px;
-    }
-
-    .contacts__section {
-      margin-right: 0;
-    }
-
-    .contacts__title {
-      font-size: 28px;
-      text-align: center;
-    }
-
-    .contacts__title--bg {
-      width: 100%;
-      line-height: 34px;
-      background-position: 85% 50%;
-    }
-
-    .contacts__social {
-      margin-top: 47px;
-    }
-
-    .contacts__mail,
-    .contacts__tel {
-      font-size: 24px;
-      text-align: center;
-    }
-
-    .contact__list {
-      justify-content: center;
-      margin-top: 13px;
-    }
-
-    .contacts__item {
-      width: 24px;
-      height: 24px;
-      margin-right: 20px;
-    }
-
-    .contacts__item:last-child {
-      margin-right: 0;
-    }
-
-    .contacts__link img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .contacts__section--form {
-      margin-top: 60px;
-    }
-
-    .contacts__form {
-      margin-top: 20px;
-    }
-
-    .footer--small-margin {
-      margin-top: 9px;
-    }
-
-    .footer__main-container {
-      padding-top: 92px;
-    }
-
-    .footer-logo {
-      margin-left: auto;
-    }
-
-    .footer__contact-text {
-      max-width: 281px;
-      margin-top: 11px;
-      font-size: 12px;
-      letter-spacing: 0.78px;
-      text-align: center;
-    }
-
-    .footer__social {
-      top: 372px;
-      flex-direction: column;
-    }
-
-    .footer__social-contacts {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .footer__contact-list {
-      width: 171px;
-      margin-top: 41px;
-    }
-
-    .footer__contact-item {
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    .footer__categories {
-      width: auto;
-      margin-right: auto;
-    }
-
-    .footer__info {
-      width: auto;
-    }
-
-    .footer__manager {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 193px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-
-    .footer__manager-text {
-      max-width: 249px;
-      margin-right: auto;
-      margin-left: auto;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    .footer__manager-tel {
-      margin-top: 8px;
-    }
-
-    .footer__politic {
-      flex-direction: column;
-      align-items: center;
-      margin-top: 33px;
-      padding-bottom: 23px;
-    }
-
-    .footer__politic-link {
-      margin-top: 3px;
-      margin-left: 0;
-    }
-
-    .card-modal__box {
-      width: 280px;
-    }
-
-    .card-modal__main-container {
-      width: calc(100% - 20px);
-      height: calc(100% - 20px);
-      margin: 10px;
-    }
-
-    .card-modal__main-img {
-      height: 157px;
-    }
-
-    .card-modal__mini-img {
-      display: none;
-    }
-
-    .card-modal__info-section {
-      margin-top: 15px;
-    }
-
-    .card-modal__price {
-      font-size: 16px;
-      align-self: center;
-    }
-
-    .card-modal__bio {
-      margin-top: 10px;
-      font-size: 12px;
-    }
-
-    .card-modal__table-name {
-      font-size: 15px;
-    }
-
-    .card-modal__btn {
-      margin-top: 22px;
-    }
-
-    .basket-modal__box {
-      width: 280px;
-    }
-
-    .basket-modal__content {
-      width: calc(100% - 20px);
-      height: calc(100% - 16px);
-      margin: 8px 10px;
-    }
-
-    .basket-modal__form {
-      width: 100%;
-    }
-
-    .basket-modal__input:not(:first-child) {
-      margin-top: 18px;
-    }
-
-    .basket-modal__input {
-      padding-bottom: 3px;
-      font-size: 12px;
-    }
-
-    .basket-modal__btn {
-      height: 47px;
-      margin-top: 18px;
-      font-size: 16px;
-    }
-
-    .basket-ellement {
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .basket-ellement__name-block {
-      width: calc(100% - 63px);
-      max-width: 100%;
-      min-width: 0;
-    }
-
-    .basket-ellement__quantity {
-      margin-top: 5px;
-      margin-left: 63px;
-    }
-
-    .basket-ellement__price {
-      margin-top: 12px;
-      margin-left: auto;
-    }
-
-    .basket-modal__number {
-      font-size: 12px;
-    }
-
-    .basket-modal__total-price {
-      font-size: 18px;
-    }
+@media (width < 480px) {
+  .main-header {
+    min-height: 681px;
   }
 
-  .fw600 {
-    font-weight: 600;
+  .main-header--min-height {
+    min-height: 0;
+  }
+
+  .menu {
+    min-height: 50px;
+  }
+
+  .menu__logo img {
+    height: 10px;
+  }
+
+  .menu__burger {
+    width: 24px;
+    height: 24px;
+    background-size: 100%;
+  }
+
+  .intro__section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .intro__title {
+    width: auto;
+    margin-top: 33px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .intro__title--big-margin {
+    font-size: 24px;
+  }
+
+  .intro__sub-title {
+    margin-top: 14px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .intro__preferences-item {
+    margin-top: 25px;
+  }
+
+  .intro__btns {
+    align-self: center;
+  }
+
+  .intro__btn-donebox {
+    margin-top: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .intro__createbox {
+    display: block;
+  }
+
+  .intro-content__image1 {
+    right: -150px;
+    bottom: 100px;
+    height: 350px;
+  }
+
+  .intro-content__image1--right {
+    right: -265px;
+    bottom: 90px;
+    height: 344px;
+  }
+
+  .intro-content__image2 {
+    right: -20px;
+    bottom: 100px;
+    height: 200px;
+  }
+
+  .intro__wave {
+    left: -250px;
+    width: 1500px;
+    transform: scaleX(-1);
+  }
+
+  .intro__wave--higher {
+    bottom: 0;
+    left: -150px;
+    width: 1671px;
+    height: 117px;
+  }
+
+  .intro__section--width {
+    min-width: auto;
+  }
+
+  .intro-content__image1--info {
+    right: auto;
+    bottom: 30px;
+    left: auto;
+    transform: scale(0.8);
+  }
+
+  .cards__subtitle {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .cards__list {
+    margin-top: 10px;
+  }
+
+  .cards__item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .cards__info {
+    padding: 11.1px 10.3px 6px 17.8px;
+  }
+
+  .cards__name {
+    font-size: 17.8px;
+  }
+
+  .cards__overview {
+    padding-top: 8.9px;
+    font-size: 8.9px;
+  }
+
+  .cards__color {
+    padding-top: 12.4px;
+  }
+
+  .cards__color-item {
+    margin-right: 3.4px;
+    margin-left: 3.4px;
+  }
+
+  .cards__color-btn {
+    width: 17.8px;
+    height: 17.8px;
+  }
+
+  .cards__purchase {
+    margin-top: 32.6px;
+  }
+
+  .cards__price {
+    font-size: 17.8px;
+  }
+
+  .cards__buy {
+    width: 47px;
+    height: 47px;
+    background-size: 47.5px;
+  }
+
+  .advantages--collumn {
+    margin-top: 0;
+  }
+
+  .main__form-block {
+    margin-top: 80px;
+  }
+
+  .form-block__contact-us {
+    align-items: center;
+    padding-right: 20px;
+  }
+
+  .form-block__title {
+    width: 156px;
+    height: 45px;
+  }
+
+  .form-block__subtitle {
+    margin-top: 16px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .form-block__text {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .form {
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .form__text {
+    min-width: 278px;
+    padding-right: 0;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .form__data {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 40px;
+    margin-left: auto;
+  }
+
+  .form__input {
+    width: 100%;
+  }
+
+  .form__btn {
+    max-width: 100%;
+  }
+
+  .form-block__picture {
+    margin-top: 40px;
+  }
+
+  .form-block__img img {
+    right: 0;
+    width: 100%;
+  }
+
+  .main__form-block--gradient {
+    margin-top: 28px;
+    background-position: 50% 20%;
+    background-size: 100%;
+  }
+
+  .form-block__contact-us--margin-top {
+    margin-top: 250px;
+  }
+
+  .from-block__rocket1 {
+    top: 165px;
+    right: -20px;
+  }
+
+  .from-block__rocket2 {
+    top: 170px;
+    left: -50px;
+  }
+
+  .form-block__subtitle--less-fontsize {
+    min-height: 93px;
+  }
+
+  .form-block__text--less-margin {
+    min-height: 95px;
+  }
+
+  .form--more-margin {
+    margin-top: 60px;
+  }
+
+  .form__data--inline {
+    margin-left: 0;
+  }
+
+  .options__section {
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .options__title {
+    max-width: 100%;
+    font-size: 20px;
+  }
+
+  .options__text {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+  .options__item img {
+    width: 65px;
+  }
+
+  .brands-section {
+    display: flex;
+    flex-direction: column;
+    height: 345px;
+    margin-top: 78px;
+  }
+
+  .brands-section__title {
+    font-size: 24px;
+  }
+
+  .brands-section__block {
+    flex-direction: column;
+    justify-content: center;
+    margin: 21px 0 0;
+    padding: 40px 0;
+  }
+
+  .brands-section__list {
+    height: 100%;
+  }
+
+  .brands-section__btn:first-child {
+    transform: rotate(-90deg);
+  }
+
+  .brands-prev-btn {
+    right: auto;
+    bottom: 0;
+    transform: rotate(90deg);
+  }
+
+  .brands-next-btn {
+    top: 0;
+    left: auto;
+  }
+
+  .brands-section__item img {
+    height: 40px;
+  }
+
+  .questions__title {
+    font-size: 28px;
+  }
+
+  .questions__subtitle {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 24px;
+  }
+
+  .contacts__section {
+    margin-right: 0;
+  }
+
+  .contacts__title {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .contacts__title--bg {
+    width: 100%;
+    line-height: 34px;
+    background-position: 85% 50%;
+  }
+
+  .contacts__social {
+    margin-top: 47px;
+  }
+
+  .contacts__mail,
+  .contacts__tel {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .contact__list {
+    justify-content: center;
+    margin-top: 13px;
+  }
+
+  .contacts__item {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+  }
+
+  .contacts__item:last-child {
+    margin-right: 0;
+  }
+
+  .contacts__link img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .contacts__section--form {
+    margin-top: 60px;
+  }
+
+  .contacts__form {
+    margin-top: 20px;
+  }
+
+  .footer--small-margin {
+    margin-top: 9px;
+  }
+
+  .footer__main-container {
+    padding-top: 92px;
+  }
+
+  .footer-logo {
+    margin-left: auto;
+  }
+
+  .footer__contact-text {
+    max-width: 281px;
+    margin-top: 11px;
+    font-size: 12px;
+    letter-spacing: 0.78px;
+    text-align: center;
+  }
+
+  .footer__social {
+    top: 372px;
+    flex-direction: column;
+  }
+
+  .footer__social-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__contact-list {
+    width: 171px;
+    margin-top: 41px;
+  }
+
+  .footer__contact-item {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .footer__categories {
+    width: auto;
+    margin-right: auto;
+  }
+
+  .footer__info {
+    width: auto;
+  }
+
+  .footer__manager {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 193px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .footer__manager-text {
+    max-width: 249px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .footer__manager-tel {
+    margin-top: 8px;
+  }
+
+  .footer__politic {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 33px;
+    padding-bottom: 23px;
+  }
+
+  .footer__politic-link {
+    margin-top: 3px;
+    margin-left: 0;
+  }
+
+  .card-modal__box {
+    width: 280px;
+  }
+
+  .card-modal__main-container {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    margin: 10px;
+  }
+
+  .card-modal__main-img {
+    height: 157px;
+  }
+
+  .card-modal__mini-img {
+    display: none;
+  }
+
+  .card-modal__info-section {
+    margin-top: 15px;
+  }
+
+  .card-modal__price {
+    font-size: 16px;
+    align-self: center;
+  }
+
+  .card-modal__bio {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .card-modal__table-name {
+    font-size: 15px;
+  }
+
+  .card-modal__btn {
+    margin-top: 22px;
+  }
+
+  .basket-modal__box {
+    width: 280px;
+  }
+
+  .basket-modal__content {
+    width: calc(100% - 20px);
+    height: calc(100% - 16px);
+    margin: 8px 10px;
+  }
+
+  .basket-modal__form {
+    width: 100%;
+  }
+
+  .basket-modal__input:not(:first-child) {
+    margin-top: 18px;
+  }
+
+  .basket-modal__input {
+    padding-bottom: 3px;
+    font-size: 12px;
+  }
+
+  .basket-modal__btn {
+    height: 47px;
+    margin-top: 18px;
+    font-size: 16px;
+  }
+
+  .basket-ellement {
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .basket-ellement__name-block {
+    width: calc(100% - 63px);
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .basket-ellement__quantity {
+    margin-top: 5px;
+    margin-left: 63px;
+  }
+
+  .basket-ellement__price {
+    margin-top: 12px;
+    margin-left: auto;
+  }
+
+  .basket-modal__number {
+    font-size: 12px;
+  }
+
+  .basket-modal__total-price {
+    font-size: 18px;
   }
 
   .order-success {
@@ -4176,6 +4161,10 @@ b {
     font-size: 16px;
     line-height: 20px;
   }
+}
+
+.fw600 {
+  font-weight: 600;
 }
 
 .set__color-btn--active {
