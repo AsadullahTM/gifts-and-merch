@@ -7,33 +7,44 @@ document.getElementById('close-burger').addEventListener('click', function () {
   document.getElementById('burger-modal').classList.remove('burger--opened');
 });
 
-if (document.querySelector('#card-modal')) {
-  document.querySelector('#card-modal').addEventListener('click', evt => {
+
+const cardModal = document.querySelector('#card-modal');
+const topSwiperImgModal = document.querySelector('.swiper.swiperTop');
+const bottomSwiperImgModal = document.querySelector('.swiper.swiperBottom');
+const setModalSliders = {
+  top: null,
+  bottom: null,
+};
+
+const cardModalClear = () => {
+  document.querySelector('#card-modal').classList.remove('card-modal--opened');
+  document.querySelector('#card-modal-color-list').innerHTML = '';
+  document.querySelector('.card-modal__table tbody').innerHTML = '';
+  document.querySelector('#mini-images').innerHTML = '';
+  document.querySelector('#big-images').innerHTML = '';
+  document.querySelector('#table-char').classList.remove('table--closed');
+  document.querySelector('.card-modal__table-name img').classList.remove('--rotate');
+  // Исправить ошибку при закрытии модалки набора, у которой всего 1 изображение
+  // Оптимально использовать optional chaining (?.)
+  setModalSliders.top.destroy();
+  setModalSliders.bottom.destroy();
+};
+
+if (cardModal) {
+  cardModal.addEventListener('click', (evt) => {
     evt.currentTarget.classList.remove('card-modal--opened');
-    document.getElementById('card-modal').classList.remove('card-modal--opened');
-    document.getElementById('card-modal-color-list').innerHTML = '';
-    document.querySelector('.card-modal__table tbody').innerHTML = '';
-    document.getElementById('mini-images').innerHTML = '';
-    document.getElementById('table-char').classList.remove('table--closed');
-    document.querySelector('.card-modal__table-name img').classList.remove('--rotate');
+    cardModalClear();
+  });
+
+  document.getElementById('close-card-modal').addEventListener('click', function () {
+    cardModalClear();
   });
 
   document.querySelector('.card-modal__box').addEventListener('click', evt => {
     evt.stopPropagation();
   });
-
 }
 
-if (document.getElementById('close-card-modal')) {
-  document.getElementById('close-card-modal').addEventListener('click', function () {
-    document.getElementById('card-modal').classList.remove('card-modal--opened');
-    document.getElementById('card-modal-color-list').innerHTML = '';
-    document.querySelector('.card-modal__table tbody').innerHTML = '';
-    document.getElementById('mini-images').innerHTML = '';
-    document.getElementById('table-char').classList.remove('table--closed');
-    document.querySelector('.card-modal__table-name img').classList.remove('--rotate');
-  });
-}
 
 if (document.querySelector('.card-modal__table-name')) {
   document.querySelector('.card-modal__table-name').addEventListener('click', function () {
@@ -139,7 +150,7 @@ const setItems = [
 ];
 
 
-let basketItems = [];
+// let basketItems = [];
 
 const setBasketItemsLS = (newBasketItems) => {
   window.localStorage.setItem('basketItems', JSON.stringify(newBasketItems));
@@ -152,12 +163,12 @@ const getBasketItemsLS = () => {
 
 
 
-getBasketItemsLS();
+// getBasketItemsLS(); // Вызов этой функции здесь ничего не делает
 
 
-const addBasketItem = (id, colorId) => {
+const addBasketItem = (id, colorIdx) => {
   const basketItems = getBasketItemsLS();
-  const itemIn = basketItems.find((el) => (id === el.id && el.colors[colorId] === el.color) ? true : false);
+  const itemIn = basketItems.find((el) => (id === el.id && el.colors[colorIdx] === el.color) ? true : false);
 
   if (itemIn) {
     itemIn.count += 1;
@@ -167,7 +178,7 @@ const addBasketItem = (id, colorId) => {
 
   basketItems.push({
     ...setItems[id],
-    color: setItems[id].colors[colorId],
+    color: setItems[id].colors[colorIdx],
     count: 1,
   });
 
@@ -191,7 +202,9 @@ const totalSum = () => {
 
 const sideCartToogle = () => {
   const basketItems = getBasketItemsLS();
-  basketItems.length ? document.querySelector('.side-cart').classList.add('--active') : document.querySelector('.side-cart').classList.remove('--active');
+  basketItems.length
+    ? document.querySelector('.side-cart').classList.add('--active')
+    : document.querySelector('.side-cart').classList.remove('--active');
   totalSum();
 };
 
@@ -207,14 +220,30 @@ const fillItemList = () => {
 
   setItems.forEach((item) => {
     const cardItem1 = cardTemplate.content.cloneNode(true);
-
-    cardItem1.querySelector('.cards__main-img').src = item.images[0];
     cardItem1.querySelector('.cards__name').textContent = item.name;
     cardItem1.querySelector('.cards__overview').textContent = item.shortDescription;
     cardItem1.querySelector('.cards__price span').textContent = item.price;
     cardItem1.querySelector('.cards__item').dataset.id = `${item.id}`;
+    const swiperImg = cardItem1.querySelector('.cards__slider');
+    const headenSlider = cardItem1.querySelector('.slider-nav');
+
+
+    const swiper = cardItem1.querySelector('.swiper-wrapper');
+    item.images.forEach((el, index) => {
+      if (index === 0) {
+        cardItem1.querySelector('.cards__main-img').src = item.images[0];
+        return;
+      }
+
+      const newImg = document.createElement('img');
+      newImg.src = el;
+      newImg.classList.add('cards__main-img', 'swiper-slide');
+      swiper.appendChild(newImg);
+    });
+
+    const cardsColorList = cardItem1.getElementById('cards-colors');
     item.colors.forEach((color, index) => {
-      const cardsColorList = cardItem1.getElementById('cards-colors');
+      // document.getElementById('cards-color') выполняется лишние разы. Нужно только один раз.
       const cardsTemplateColor = document.getElementById('cards-color');
       const cardColor1 = cardsTemplateColor.content.cloneNode(true).querySelector('.cards__color-item');
       cardColor1.querySelector('.cards__color-item button').style = `background-color: ${color}`;
@@ -232,8 +261,8 @@ const fillItemList = () => {
     });
     cardsList.appendChild(cardItem1);
 
+    // Вынести из setItems.forEach()
     const colorBtns = cardsList.querySelectorAll('.cards__color-item');
-
     colorBtns.forEach((btn) => {
       btn.addEventListener('click', (evt) => {
         evt.stopPropagation();
@@ -246,6 +275,25 @@ const fillItemList = () => {
         btnEl.classList.add('set__color-btn--active');
       });
     });
+
+    if (item.images.length > 1) {
+      headenSlider.classList.remove('headen');
+      swiperImg.classList.add('swiper');
+      new Swiper(swiperImg, {
+        speed: 400,
+        spaceBetween: 20,
+        slidesPerView: 1,
+        loop: true,
+        navigation: {
+          nextEl: '.slider-nav__direction--next',
+          prevEl: '.slider-nav__direction--prev',
+        },
+        pagination: {
+          el: '.slider-nav__position',
+          type: 'fraction',
+        },
+      });
+    }
   });
 };
 
@@ -258,6 +306,7 @@ const openBasket = document.querySelector('.card-modal__btn');
 const fillBasket = () => {
   const basketItems = getBasketItemsLS();
   basketItems.forEach((item) => {
+    // Не переискивать лишние разы шаблон document.querySelector('#basket-item')
     const basketItemsTemp = document.querySelector('#basket-item').content.cloneNode(true);
     const basketItem1 = basketItemsTemp.querySelector('.basket-ellement');
     const itemImg = basketItem1.querySelector('.basket-ellement__main-img');
@@ -287,14 +336,13 @@ const fillBasket = () => {
       totalSum();
 
       if (item.count === 0) {
+        // Объединить в одну функцию с itemDelete.addEventListener('click', () => {...
         const newIndex = basketItems.findIndex(el =>
         ((itemMinus.closest('.basket-ellement').dataset.id === el.id) && (itemMinus.closest('.basket-ellement').dataset.colorIdx === el.color)
         ));
-
         basketList.removeChild(basketItem1);
         basketItems.splice(newIndex, 1);
         setBasketItemsLS(basketItems);
-
         if (!basketItems.length) {
           basket.classList.toggle('basket-modal--opened');
           sideCartToogle();
@@ -312,6 +360,11 @@ const fillBasket = () => {
     });
 
     itemDelete.addEventListener('click', () => {
+      /** Объединить в одну функцию с
+       * itemMinus.addEventListener('click', () => {
+       *   ...
+       *   if (item.count === 0) {
+       *  */
       const newIndex = basketItems.findIndex(el =>
       ((basketItem1.dataset.id === el.id) && (basketItem1.dataset.colorIdx === el.color)
       ));
@@ -339,10 +392,35 @@ const openCartModal = () => {
   fillBasket();
 };
 
+const cardModalImgs = document.querySelector('.card-modal__main-img');
+
+const topSlideImgGng = (img) => {
+  const topSwiperSlide = document.createElement('div');
+  topSwiperSlide.classList.add('swiper-slide');
+  const topSwiperImg = document.createElement('img');
+  topSwiperImg.classList.add('card-modal__big-img');
+  topSwiperImg.src = img;
+  topSwiperSlide.appendChild(topSwiperImg);
+  cardModalImgs.appendChild(topSwiperSlide);
+};
+
+const bottomSlideImgGng = (img) => {
+  const bottomSwiperSlide = document.createElement('div');
+  bottomSwiperSlide.classList.add('swiper-slide');
+  const bottomSwiperImg = document.createElement('img');
+  bottomSwiperImg.classList.add('card-modal__mini-img');
+  bottomSwiperImg.src = img;
+  const modalImgList = document.getElementById('mini-images');
+  bottomSwiperSlide.appendChild(bottomSwiperImg);
+  modalImgList.appendChild(bottomSwiperSlide);
+};
+
 document.querySelectorAll(('.cards__info')).forEach(el => {
   const dataID = el.closest('.cards__item').dataset.id;
-  const basketCardsBtn = el.querySelectorAll('.cards__buy');
+  const basketCardsBtn = el.querySelectorAll('.cards__buy'); // basketCardsBtn.length всегда === 1
+  const cardModalSliderBtns = document.querySelectorAll('.card-modal__slider');
 
+  // basketCardsBtn.length всегда === 1
   basketCardsBtn.forEach(btn => {
     btn.addEventListener('click', (evt) => {
       evt.stopPropagation();
@@ -356,12 +434,12 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
   });
 
   el.addEventListener('click', function () {
-    const cardModal = document.getElementById('card-modal');
+    const cardModal = document.getElementById('card-modal'); // Лишний поиск по ДОМу
     cardModal.classList.add('card-modal--opened');
     cardModal.dataset.id = dataID;
 
     const colorIdx = cardModal.dataset.colorIdx = el.querySelector('.set__color-btn--active').dataset.colorIdx;
-    const modalOpened = document.getElementById('card-modal');
+    const modalOpened = document.getElementById('card-modal'); // Лишний поиск по ДОМу
 
 
     modalOpened.querySelector('.card-modal__name').textContent = setItems[dataID].name;
@@ -369,9 +447,9 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
     modalOpened.querySelector('.card-modal__bio').textContent = setItems[dataID].description;
 
     setItems[dataID].attributes.forEach(atr => {
-      const cardsCharList = document.querySelector('tbody');
+      const cardsCharList = document.querySelector('tbody'); // Лишний поиск по ДОМу
       const cardsTempChar = document.getElementById
-        ('cards-modal-temp-char').content.cloneNode(true);
+        ('cards-modal-temp-char').content.cloneNode(true); // Лишний поиск по ДОМу
       const char1 = cardsTempChar.querySelector('tr');
 
       char1.querySelector('th').textContent = atr.label;
@@ -381,8 +459,8 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
     });
 
     setItems[dataID].colors.forEach((color, index) => {
-      const modalColorList = document.getElementById('card-modal-color-list');
-      const cardsTemplateColor = document.getElementById('cards-color');
+      const modalColorList = document.getElementById('card-modal-color-list'); // Лишний поиск по ДОМу
+      const cardsTemplateColor = document.getElementById('cards-color'); // Лишний поиск по ДОМу
       const cardColor1 = cardsTemplateColor.content.cloneNode(true).querySelector('.cards__color-item');
       cardColor1.querySelector('.cards__color-btn').style = `background-color: ${color}`;
       cardColor1.dataset.colorIdx = index;
@@ -398,23 +476,58 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
       const images = setItems[dataID].images;
 
       images.forEach((img, index) => {
-        if (images.length === 1) {
-          document.querySelectorAll('.card-modal__slider').forEachclassList.add('none');
-        }
-        if (index === 0) {
-          modalOpened.querySelector('.card-modal__big-img').src = img;
+
+        if (index === 0 && images.length === 1) {
+          topSlideImgGng(img);
           return;
         }
 
-        const modalImgList = document.getElementById('mini-images');
-        const modalTemplateImg = document.getElementById('card-modal-mini-img');
-        const modalImg1 = modalTemplateImg.content.cloneNode(true);
+        if (index === 0) {
+          topSlideImgGng(img);
+          bottomSlideImgGng(img);
+          return;
+        }
 
-        modalImg1.querySelector('.card-modal__mini-img').src = img;
-
-        modalImgList.appendChild(modalImg1);
-
+        topSlideImgGng(img);
+        bottomSlideImgGng(img);
       });
+
+      if (images.length > 1) {
+
+        setModalSliders.bottom = new Swiper(bottomSwiperImgModal, {
+          spaceBetween: 10,
+          slidesPerView: 4,
+          freeMode: true,
+          watchSlidesProgress: true,
+        });
+
+        setModalSliders.top = new Swiper(topSwiperImgModal, {
+          speed: 400,
+          spaceBetween: 20,
+          slidesPerView: 1,
+          loop: true,
+          navigation: {
+            nextEl: '.--next',
+            prevEl: '.--prew',
+          },
+          thumbs: {
+            swiper: bottomSwiperImgModal,
+          },
+        });
+      }
+
+      if (images.length > 1) {
+        cardModalSliderBtns.forEach(el => {
+          el.classList.remove('display-none');
+        });
+
+        return;
+      }
+
+      cardModalSliderBtns.forEach(el => {
+        el.classList.add('display-none');
+      });
+
     };
     changeImg();
 
@@ -443,10 +556,10 @@ document.querySelectorAll(('.cards__info')).forEach(el => {
 });
 
 document.querySelector('.side-cart').addEventListener('click', () => {
-  document.querySelector('.basket-modal--headen').classList.toggle('basket-modal--opened');
-  document.querySelector('#basket-list').innerHTML = '';
+  document.querySelector('.basket-modal--headen').classList.toggle('basket-modal--opened'); // Лишний поиск по ДОМу
+  document.querySelector('#basket-list').innerHTML = ''; // Лишний поиск по ДОМу
   fillBasket();
-  basket.querySelector('.card-modal__btn--close').addEventListener('click', () => {
+  basket.querySelector('.card-modal__btn--close').addEventListener('click', () => { // Лишний поиск по ДОМу
     basket.classList.remove('basket-modal--opened');
   }
   );
@@ -454,7 +567,7 @@ document.querySelector('.side-cart').addEventListener('click', () => {
 
 document.querySelectorAll('.questions__block').forEach(item => {
   item.addEventListener('click', function () {
-    item.closest('.questions__item').classList.toggle('questions__item--opened');
+    item.closest('.questions__item').classList.toggle('questions__item--opened'); // Лишний поиск по ДОМу
   });
 });
 
@@ -470,6 +583,7 @@ const addCallValidation = () => {
       evt.preventDefault();
       orderSucessModal.classList.add('modal--opened');
 
+      // Лишний раз добавляется обработчик событий. При первом открытии он срабатывает один раз. При втором - 2 раза. При третьем - 3 раза и т.д.
       orderSucessModal.querySelector('button[type="button"]').addEventListener('click', () => {
         orderSucessModal.classList.remove('modal--opened');
       });
@@ -496,7 +610,8 @@ const addCallValidation = () => {
 
 addCallValidation();
 
-if (document.querySelector('.swiper')) {
+// Вынести document.querySelector('.brands-section__block') в переменную. Передавать её в Свайпер первым аргументов вместо селектора.
+if (document.querySelector('.brands-section__block')) {
   new Swiper('.swiper.brands-section__block', {
     speed: 400,
     loop: true,

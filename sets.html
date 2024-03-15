@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gifts & Merch</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="./css/vendor/normalize.css">
   <link rel="stylesheet" href="./css/fonts.css">
   <link rel="stylesheet" href="./css/main.css">
@@ -354,15 +355,23 @@
       <div class="card-modal__main-container">
 
         <div class="card-modal__images">
-          <div class="card-modal__main-img">
+
+          <div class="swiper swiperTop">
+            <div class="swiper-wrapper card-modal__main-img" id="big-images">
+            </div>
             <button class="card-modal__slider --prew" type="button"><img src="./images/icons/next.png" alt=""></button>
 
             <button class="card-modal__slider --next" type="button"><img src="./images/icons/next.png" alt=""></button>
+          </div>
 
-            <img class="card-modal__big-img" src="./images/main_img/set1.jpg" alt="">
+          <div>
           </div>
-          <div id="mini-images">
+
+          <div thumbsSlider="" class="swiper swiperBottom">
+            <div class="swiper-wrapper" id="mini-images">
+            </div>
           </div>
+
         </div>
 
         <section class="card-modal__info-section">
@@ -430,9 +439,16 @@
 
   <template id="card-template">
     <li class="cards__item">
-
-      <img class="cards__main-img" src="" alt="">
-
+      <div class="cards__slider">
+        <div class="card__image-list swiper-wrapper">
+          <img class="cards__main-img swiper-slide" src="" alt="">
+        </div>
+        <div class="slider-nav card__slider-nav headen">
+          <button class="slider-nav__direction slider-nav__direction--prev" type="button"></button>
+          <span class="slider-nav__position">1/7</span>
+          <button class="slider-nav__direction slider-nav__direction--next" type="button"></button>
+        </div>
+      </div>
       <div class="cards__info">
 
         <p class="cards__name"></p>
@@ -461,10 +477,6 @@
       <th></th>
       <td></td>
     </tr>
-  </template>
-
-  <template id="card-modal-mini-img">
-    <img class="card-modal__mini-img" src="" alt="">
   </template>
 
   <template id="basket-item">
@@ -498,6 +510,7 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="./js/script.js"></script>
 </body>
 </html>
