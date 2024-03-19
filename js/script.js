@@ -1,12 +1,21 @@
 
 const burgerModal = document.querySelector('#burger');
 const burgerTogles = document.querySelectorAll('.burgerToggle');
+const burgerBlock = burgerModal.querySelector('.burger__block');
 
 burgerTogles.forEach(el => {
   el.addEventListener('click', function () {
     burgerModal.classList.toggle('burger--opened');
   }
   );
+});
+
+burgerModal.addEventListener('click', () => {
+  burgerModal.classList.toggle('burger--opened');
+});
+
+burgerBlock.addEventListener('click', (evt) => {
+  evt.stopPropagation();
 });
 
 
@@ -335,11 +344,6 @@ if (cardModal) {
       ShowSideCartToogle();
     });
 
-    basket.querySelector('.card-modal__btn--close').addEventListener('click', function () {
-      basket.classList.remove('basket-modal--opened');
-    });
-
-
     el.addEventListener('click', function () {
       cardModal.classList.add('card-modal--opened');
       cardModal.dataset.id = dataID;
@@ -554,6 +558,18 @@ document.querySelector('.side-cart').addEventListener('click', () => {
     basket.classList.remove('basket-modal--opened');
   }
   );
+});
+
+basket.addEventListener('click', () => {
+  basket.classList.remove('basket-modal--opened');
+});
+
+basket.querySelector('.basket-modal__box').addEventListener('click', evt => {
+  evt.stopPropagation();
+});
+
+basketBtnClose.addEventListener('click', function () {
+  basket.classList.remove('basket-modal--opened');
 });
 
 const addCallValidation = () => {
