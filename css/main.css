@@ -370,14 +370,13 @@ b {
 }
 
 .--active {
-  z-index: 100000;
   display: flex;
 }
 
 .side-cart__container {
   position: fixed;
   top: 80px;
-  z-index: 1;
+  z-index: 5;
   margin-right: 15px;
 }
 
@@ -1363,7 +1362,7 @@ b {
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: 110vh;
   background: rgb(33 33 33 / 0.36);
 }
 
